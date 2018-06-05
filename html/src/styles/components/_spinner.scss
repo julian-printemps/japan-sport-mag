@@ -1,0 +1,59 @@
+
+%dots {
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation-iteration-count: infinite;
+    animation-duration: 0.75s;
+    animation-name: animeLoader;
+    display: inline-block;
+    border-radius: 100%;
+    margin: 2px;
+    width: rem-calc(16);
+    height: rem-calc(16);
+    background: $red_alpha_01;
+    animation-delay: 0.12s;
+}
+
+.loader {
+    position: relative;
+    text-align: center;
+    padding: rem-calc(80) rem-calc(20);
+
+    &--inner {
+        position: relative;
+        display: inline-block;
+        width: rem-calc(80);
+
+        & .dot_1 {
+            @extend %dots;
+            animation-delay: 0.12s;
+            left: 0;
+        }
+        & .dot_2 {
+            @extend %dots;
+            animation-delay: 0.24s;
+            left: calc(50% - 10px);
+        }
+        & .dot_3 {
+            @extend %dots;
+            animation-delay: 0.36s;
+            right: 0;
+        }
+    }
+
+    & img {
+        width: rem-calc(100);
+    }
+}
+
+@include keyframes(animeLoader) {
+    0%,
+    80% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    45% {
+        transform: scale(0.1);
+        opacity: 0.7;
+    }
+}

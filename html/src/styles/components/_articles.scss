@@ -1,0 +1,223 @@
+/*
+** News
+*/
+.news_article {
+    padding-bottom: rem-calc(10);
+    padding-top: rem-calc(10);
+
+    &--item:not(:last-child) & {
+        border-bottom: 1px solid $grey_01;
+    }
+
+    &--title {
+        @include fts(16,16);
+        font-weight: 500;
+        font-family: $font-roboto;
+        margin-bottom: rem-calc(10);
+    }
+
+    &--main {
+        @include fts(14,18);
+        order: 2;
+
+        & p { margin: 0; }
+    }
+
+    &--date {
+        order: 1;
+        color: $red_01;
+        @include fts(12,16);
+    }
+
+    &--button {
+        // display: inline-block;
+        display: block;
+        width: 100%;
+        // width: rem-calc(34);
+        border: none;
+        // background-color: $red_01;
+        color: $red_01;
+        font-weight: 600;
+        @include fts(20,20);
+        padding: rem-calc(6) rem-calc(10) rem-calc(8);
+        text-align: center;
+        cursor: pointer;
+
+        &--holder {
+            // order: 3;
+            border-top: 1px solid $red_alpha_01;
+            margin-top: rem-calc(10);
+            // padding-top: rem-calc(10);
+            // padding-bottom: rem-calc(10);
+        }
+    }
+}
+
+
+/*
+** Projects
+*/
+.project_article {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: rem-calc(40) rem-calc(20);
+    text-align: center;
+
+    &--title {
+        @include fts(16,26);
+        color: rgba($white, 0.8);
+        text-align: center;
+        font-family: $font-roboto;
+        font-weight: bold;
+
+        @include medium {
+            padding: 0 rem-calc(40);
+            top: 20%;
+            @include fts(20,30);
+        };
+    }
+
+    &--link {
+        display: inline-block;
+        background-color: $red_01;
+        padding: rem-calc(14) rem-calc(24);
+        text-transform: uppercase;
+        color: $white;
+        font-family: $font-roboto;
+        letter-spacing: 0.3em;
+        @include fts(16,16);
+        @include setTransition;
+
+        &:hover, &:active, &:focus {
+            background-color: darken($red_01,10);
+            color: $white;
+            @include setTransition;
+        }
+
+        &--holder {
+            position: absolute;
+            bottom: rem-calc(40);
+            left: 0;
+            width: 100%;
+        }
+    }
+}
+
+
+
+
+/*
+** member_card
+*/
+.member_card {
+    margin-bottom: rem-calc(20);
+    padding-bottom: rem-calc(40);
+    padding-left: rem-calc(28);
+    padding-right: rem-calc(28);
+
+    @include medium {
+        padding-left: rem-calc(20);
+        padding-right: rem-calc(20);
+    };
+
+    &--list .column:not(:last-child) & {
+        border-bottom: 1px solid $grey_01;
+    }
+    &--list {
+        margin-top: rem-calc(40);
+        @include medium {
+            margin-top: rem-calc(80);
+        };
+    }
+
+    &--main {
+        @extend .text;
+        opacity: 0;
+        color: $main_text;
+
+        &.is-visible {
+            animation: fade_in_intro 1s forwards;
+            animation-delay: 0.5s;
+        }
+    }
+
+    &--title {
+        @include fts(12,22);
+        margin-bottom: rem-calc(20);
+        color: $gray_02;
+
+        @include medium {
+            @include fts(14,24);
+        };
+
+        & strong {
+            position: relative;
+            display: inline-block;
+            padding-bottom: rem-calc(16);
+            margin-right: rem-calc(14);
+            color: $gray_03;
+            font-weight: bold;
+            @include fts(16,26);
+            @include medium {
+                @include fts(18,28);
+            };
+
+            &:after {
+                position: absolute;
+                content: '';
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: $gray_03;
+            }
+        }
+
+        & span {
+            display: block;
+
+            @include medium {
+                display: inline-block;
+            };
+        }
+
+        .odd & {
+            @include medium {
+                text-align: right;
+            };
+        }
+    }
+
+    &--image {
+        display: block;
+        overflow: hidden;
+        border-radius: 50%;
+        width: rem-calc(200px);
+        margin: 0 auto rem-calc(10);
+
+        @include medium {
+            display: inline-block;
+            float: left;
+            margin: 0 rem-calc(20) rem-calc(5) 0;
+
+            .odd & {
+                margin: 0 0 rem-calc(5) rem-calc(20);
+                float: right;
+            }
+        };
+    }
+
+    &--intro {
+        display: inline;
+        position: relative;
+
+        & .icon {
+            display: inline-block;
+            width: rem-calc(20);
+            height: rem-calc(20);
+            margin-right: rem-calc(8);
+            margin-left: rem-calc(8);
+            fill: $gray_02;
+        }
+    }
+}

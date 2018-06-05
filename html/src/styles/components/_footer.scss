@@ -1,0 +1,32 @@
+/*
+** Footer
+*/
+.footer {
+    padding-top: rem-calc(15);
+    margin-top: rem-calc(15);
+    padding-bottom: rem-calc(30);
+    border-top: 1px solid $grey_01;
+
+    &--holder {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    @include medium {
+        padding-top: rem-calc(30);
+        margin-top: rem-calc(30);
+        padding-bottom: rem-calc(60);
+    }
+
+    &--credits {
+        margin-top: rem-calc(20);
+        @include fts(12,16);
+        font-weight: 400;
+        color: $gray_03;
+        text-align: center;
+
+        @include medium {
+            @include fts(16,20);
+        }
+    }
+}

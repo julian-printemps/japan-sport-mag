@@ -1,0 +1,112 @@
+/*
+** button_menu
+*/
+.button_menu {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    &--holder {
+        position: absolute;
+        z-index: 2200;
+        right: rem-calc(10);
+
+
+        @include large {
+            display: none;
+        }
+    }
+
+    & .icon {
+        width: rem-calc(30);
+        height: rem-calc(30);
+        fill: $red_01;
+
+        &-close-button {
+            display: none;
+        }
+    }
+
+    &.is-active .icon {
+        &-open-button {
+            display: none;
+        }
+        &-close-button {
+            display: block;
+        }
+    }
+}
+
+
+.button_next {
+    position: absolute;
+    display: inline-block;
+    width: rem-calc(50);
+    height: rem-calc(50);
+    bottom: rem-calc(60);
+    left: calc(50% - 25px);
+    @include setTransition;
+
+
+    & .icon {
+        width: rem-calc(40);
+        height: rem-calc(40);
+        fill: $red_01;
+        transform: rotate(90deg);
+        @include setTransition;
+    }
+
+    &:hover, &:active {
+        & .icon {
+            fill: darken($red_01,10);
+            margin-top: rem-calc(5);
+            @include setTransition;
+        }
+    }
+}
+
+// form submit
+.button_submit {
+    position: relative;
+    padding: 1rem 4rem 1rem 1rem;
+    background-color: transparent;
+    color: $red_01;
+    @include fts(20,20);
+    text-transform: uppercase;
+    border: 1px solid $red_01;
+    cursor: pointer;
+    @include setTransition;
+
+    & .icon {
+        fill: $red_01;
+        position: absolute;
+        top: calc(50% - 15px);
+        right: 1rem;
+        display: inline-block;
+        width: rem-calc(30);
+        height: rem-calc(30);
+        @include setTransition;
+    }
+
+    &:focus {
+        background-color: transparent;
+        color: $red_01;
+    }
+
+    &:hover, &:active {
+        background-color: transparent;
+        color: $black;
+        border-color: $black;
+        @include setTransition;
+
+        & .icon {
+            fill: $black;
+            @include setTransition;
+        }
+    }
+
+    &--holder {
+        margin-top: rem-calc(50);
+        text-align: center;
+    }
+}

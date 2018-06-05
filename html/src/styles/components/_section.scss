@@ -1,0 +1,29 @@
+.section {
+    padding-top: rem-calc(60);
+    padding-bottom: rem-calc(60);
+    border-top: 1px solid $grey_01;
+    &.news { border-top: none; }
+
+    &--title {
+        @include fts(24,24);
+        font-weight: 400;
+        margin-bottom: rem-calc(40);
+        font-family: $font-roboto;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 0.8em;
+
+        & strong {
+            display: inline-block;
+            font-weight: 400;
+            padding: 0;
+            padding-bottom: rem-calc(10);
+            padding-left: rem-calc(18);
+            border-bottom: 1px solid $main_text;
+        }
+
+        @include medium {
+            margin-bottom: rem-calc(60);
+        };
+    }
+}

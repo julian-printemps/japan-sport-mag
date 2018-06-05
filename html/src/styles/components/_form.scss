@@ -1,0 +1,54 @@
+.form {
+    padding: rem-calc(20);
+
+    @include medium {
+        padding: rem-calc(20) rem-calc(30);
+    };
+    @include large {
+        padding: rem-calc(20) rem-calc(40);
+    };
+
+    & .robotic { display: none; }
+
+    & .label {
+        font-family: $font-roboto;
+        font-weight: 500;
+    }
+
+    & .textarea {
+        resize: vertical;
+    }
+
+    & .input, & .textarea {
+        @include setTransition;
+        &:focus {
+            border-color: $red_01;
+            @include setTransition;
+            box-shadow: none;
+        }
+    }
+}
+
+
+.form_validation {
+    padding-top: rem-calc(40);
+
+    &--title {
+        @include fts(16,26);
+        margin-bottom: rem-calc(10);
+        text-align: center;
+
+        @include medium {
+            @include fts(24,34);
+        }
+    }
+
+    &--message {
+        @include fts(12,22);
+        text-align: center;
+
+        @include medium {
+            @include fts(16,26);
+        }
+    }
+}

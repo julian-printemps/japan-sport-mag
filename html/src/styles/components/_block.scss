@@ -1,0 +1,98 @@
+.sns_block {
+    display: none;
+    position: absolute;
+    //new
+    top: rem-calc(10);
+    right: rem-calc(10);
+    //old
+    // bottom: rem-calc(40);
+
+    width: 100%;
+    opacity: 0;
+    animation: 3s ease forwards 4.4s fade_in_intro;
+
+    @include medium {
+        right: rem-calc(10);
+        display: block;
+    };
+
+    @include large {
+        right: rem-calc(40);
+    };
+
+    //new
+    & .is-right { justify-content: flex-end; }
+    //old
+    // & .is-right { justify-content: center; }
+
+    &--link {
+        display: inline-block;
+        background-color: $red_01;
+        padding: rem-calc(10);
+        margin: 0 rem-calc(2);
+        line-height: 0;
+        @include setTransition;
+
+        & .icon {
+            fill: $white;
+            width: rem-calc(20);
+            height: rem-calc(20);
+        }
+
+        &:hover, &:active, &:focus {
+            background-color: darken($red_01, 10);
+            @include setTransition;
+        }
+    }
+}
+
+.sns_footer_block {
+    margin-bottom: rem-calc(40);
+
+    & .is-center { justify-content: center; }
+}
+
+
+
+%border_icon {
+    //new
+    display: none;
+
+    position: fixed;
+    z-index: 2000;
+    width: rem-calc(30);
+    height: rem-calc(30);
+
+    @include medium {
+        display: block;
+        width: rem-calc(40);
+        height: rem-calc(40);
+    }
+}
+
+.icon-border {
+    &--holder {
+        position: relative;
+    }
+
+    &-top-left {
+        @extend %border_icon;
+        top: rem-calc(6);
+        left: rem-calc(6);
+    }
+    &-top-right {
+        @extend %border_icon;
+        top: rem-calc(6);
+        right: rem-calc(6);
+    }
+    &-bottom-left {
+        @extend %border_icon;
+        bottom: rem-calc(6);
+        left: rem-calc(6);
+    }
+    &-bottom-right {
+        @extend %border_icon;
+        bottom: rem-calc(6);
+        right: rem-calc(6);
+    }
+}

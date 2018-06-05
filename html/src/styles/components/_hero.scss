@@ -1,0 +1,35 @@
+.hero {
+    position: relative;
+
+    &.is-fullheight {
+        height: auto;
+        min-height: 100vh;
+        // background-image: url(../static/img/hero.jpg);
+        // background-position: bottom;
+        // background-size: cover;
+
+        & .hero-body {
+            display: block;
+        }
+
+        @include medium {
+            height: 100vh;
+            min-height: 100vh;
+            overflow: hidden;
+
+            & .hero-body {
+                display: flex;
+            }
+        }
+    }
+
+    &-body {
+        position: relative;
+        padding: 0;
+        width: 100%;
+
+        @include medium {
+            height: 100%;
+        }
+    }
+}

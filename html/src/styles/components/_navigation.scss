@@ -1,0 +1,139 @@
+.logo {
+    width: rem-calc(160);
+    height: rem-calc(46);
+
+    @include large {
+        width: rem-calc(230);
+        height: rem-calc(80);
+    }
+}
+
+.navigation {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: $white;
+    width: 100%;
+    padding-top: rem-calc(10);
+    min-height: rem-calc(50);
+    border-bottom: 1px solid $red_01;
+
+    &.is-active {
+        padding-bottom: rem-calc(20);
+    }
+
+    @include medium {
+        position: sticky;
+        padding-top: 0;
+        padding-top: rem-calc(10);
+        padding-bottom: rem-calc(10);
+        min-height: 0;
+        border-bottom: none;
+    }
+}
+
+.nav {
+    padding-top: 0;
+    padding-bottom: 2px;
+
+    &--holder {
+        align-items: center;
+    }
+
+    & .menu {
+        text-align: center;
+        display: none;
+        padding-bottom: 0;
+        align-items: center;
+
+        &.is-active { display: block; }
+
+        @include medium {
+            display: flex;
+            padding-bottom: 0;
+            &.is-active { display: flex; }
+        }
+
+        & > li {
+            &.column.is-narrow {
+                flex-grow: 0;
+            }
+
+            & > a {
+                position: relative;
+                display: inline-block;
+                color: $red_01;
+                @include fts(13,13);
+                text-transform: uppercase;
+                margin: 0;
+                padding: rem-calc(10);
+                font-family: $font-roboto;
+                font-weight: 300;
+                letter-spacing: 0.2em;
+
+
+                @include medium {
+                    @include fts(15,25);
+                };
+
+                &:after {
+                    position: absolute;
+                    content: '';
+                    display: block;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 1px;
+                    background-color: $red_01;
+                    @include setTransition;
+                }
+
+                &:hover, &:active {
+                    &:after {
+                        width: 100%;
+                        @include setTransition;
+                    }
+                }
+
+                &.lang-switch {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    @include fts(12,12);
+                    @include setTransition;
+                    margin-left: rem-calc(20);
+                    border-left: 1px solid $red_alpha_01;
+
+                    @include medium {
+                        position: relative;
+                        bottom: initial;
+                        right: initial;
+                    };
+
+                    &:hover, &:active {
+                        color: $red_alpha_02;
+                        @include setTransition;
+                    }
+
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &--icon {
+        display: block;
+        width: rem-calc(30);
+        height: rem-calc(30);
+        fill: $white;
+        @include setTransition;
+
+        &:hover, &:active {
+            fill: darken($white, 15);
+            @include setTransition;
+        }
+    }
+}

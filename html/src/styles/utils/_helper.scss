@@ -1,0 +1,206 @@
+// Text
+%text {
+    @include fts(15,17);
+    color: $red_01;
+    margin-bottom: rem-calc(16);
+
+    @include medium {
+        @include fts(20,22);
+        margin-bottom: rem-calc(16);
+    }
+
+    &.strong {
+        font-weight: 600;
+    }
+}
+
+.text {
+    @extend %text;
+
+    &__small {
+        @extend %text;
+        @include fts(11,13);
+        margin-bottom: rem-calc(10);
+
+        @include medium {
+            @include fts(14,16);
+            margin-bottom: rem-calc(10);
+        }
+    }
+
+    &__large {
+        @extend %text;
+        @include fts(20,22);
+        margin-bottom: rem-calc(20);
+        margin-top: rem-calc(20);
+
+        @include medium {
+            @include fts(26,28);
+            margin-bottom: rem-calc(30);
+            margin-top: rem-calc(30);
+        }
+    }
+
+    &__footer {
+        @extend %text;
+        @include fts(11,24);
+        color: $gray_01;
+        font-weight: bold;
+
+        @include medium {
+            @include fts(12,16);
+        }
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+// Layout
+.small-shrink {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    max-width: 100%;
+}
+
+.small-auto {
+    -webkit-flex: 1 1 0px;
+    -ms-flex: 1 1 0px;
+    flex: 1 1 0px;
+}
+
+
+.medium-shrink {
+    @include medium {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+}
+
+.medium-auto {
+    @include medium {
+        -webkit-flex: 1 1 0px;
+        -ms-flex: 1 1 0px;
+        flex: 1 1 0px;
+    }
+}
+
+.large-shrink {
+    @media screen and #{breakpoint(large)} {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+}
+
+.large-auto {
+    @include large {
+        -webkit-flex: 1 1 0px;
+        -ms-flex: 1 1 0px;
+        flex: 1 1 0px;
+    }
+}
+
+
+// Visibility
+.seo {
+    position: absolute;
+    height: 0;
+    width: 0;
+    line-height: 0;
+    font-size: 0;
+    text-indent: -999%;
+}
+
+
+
+// Text
+%trimmed {
+    max-height: rem-calc(35);
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: inline-block;
+        padding: 0;
+        line-height: 1;
+        width: 100%;
+        height: rem-calc(15px);
+
+        background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+
+    &.is-active {
+        max-height: rem-calc(500);
+        @include setTransition;
+
+        &:before {
+            bottom: -20px;
+        }
+    }
+}
+
+.trimmed {
+    @extend %trimmed;
+}
+
+
+
+.medium-text-center {
+    @include medium {
+        text-align: center;
+    }
+}
+
+
+/*
+** object_fit
+*/
+.object_fit {
+    .related_card & {
+        @include IE11 { height: 180px; }
+        @include edge { height: 180px; }
+    }
+    .pickup_card & {
+        @include IE11 { height: 270px; }
+        @include edge { height: 270px; }
+    }
+
+
+    @include IE11 {
+        background-position: center;
+        background-size: cover;
+
+        & img { display: none; }
+    }
+    @include edge {
+        background-position: center;
+        background-size: cover;
+
+        & img { display: inline-block; }
+    }
+}
+
+
+.columns {
+    margin: 0;
+
+    @include medium {
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+        margin-top: -0.75rem;
+    };
+}

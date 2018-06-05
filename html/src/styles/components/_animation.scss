@@ -1,0 +1,82 @@
+.title_animation {
+    opacity: 1;
+    animation: 1s ease forwards 2.5s fade_out_intro;
+    font-family: $font-default;
+    color: $main_text;
+
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 40px);
+    height: rem-calc(80px);
+    margin: 0;
+    text-align: center;
+    @include fts(16,26);
+
+    @include large {
+        position: fixed;
+        top: calc(50% - 45px);
+        left: calc(50% - 390px);
+        width: rem-calc(800px);
+        @include fts(30,30);
+    };
+
+    & span {
+        opacity: 0;
+    }
+
+    & .ani1 { animation: 1s ease forwards .27s fade_in_intro; }
+    & .ani2 { animation: 1s ease forwards .34s fade_in_intro; }
+    & .ani3 { animation: 1s ease forwards .41s fade_in_intro; }
+    & .ani4 { animation: 1s ease forwards .48s fade_in_intro; }
+    & .ani5 { animation: 1s ease forwards .55s fade_in_intro; }
+    & .ani6 { animation: 1s ease forwards .62s fade_in_intro; }
+    & .ani7 { animation: 1s ease forwards .69s fade_in_intro; }
+    & .ani8 { animation: 1s ease forwards .76s fade_in_intro; }
+    & .ani9 { animation: 1s ease forwards .83s fade_in_intro; }
+    & .ani10 { animation: 1s ease forwards .9s fade_in_intro; }
+    & .ani11 { animation: 1s ease forwards .97s fade_in_intro; }
+    & .ani12 { animation: 1s ease forwards 1.04s fade_in_intro; }
+    & .ani13 { animation: 1s ease forwards 1.11s fade_in_intro; }
+    & .ani14 { animation: 1s ease forwards 1.19s fade_in_intro; }
+
+    & .is-bold { font-weight: bold; }
+    & .is-circle {
+        display: inline-block;
+        color: $red_01;
+        padding: 0 rem-calc(20) 0 0;
+        @include fts(10,26);
+    }
+}
+
+.fade_in_intro { opacity: 0; animation: 3s ease forwards 4s fade_in_intro; }
+
+.title_logo {
+    position: absolute;
+    z-index: 100;
+    top: calc(50% - 100px);
+    left: calc(50% - 130px);
+    opacity: 0;
+    width: rem-calc(260);
+    animation: 3s ease forwards 4s fade_in_intro;
+
+    @include medium {
+        width: rem-calc(400);
+        top: calc(50% - 150px);
+        left: calc(50% - 200px);
+    };
+    @include large {
+        width: rem-calc(500);
+        top: calc(50% - 180px);
+        left: calc(50% - 250px);
+    };
+}
+
+
+@include keyframes(fade_in_intro) {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@include keyframes(fade_out_intro) {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}

@@ -1,0 +1,150 @@
+.carousel {
+    &--slide {
+        margin: 0;
+
+        & img {
+            width: 100%;
+        }
+    }
+
+    // &--icon {
+    //   width: 2rem;
+    //   height: 2rem;
+    //   fill: $white;
+    //   @include setTransition;
+    //
+    //   &:focus {
+    //     fill: $white;
+    //   }
+    //   &:hover, &:active {
+    //     fill: darken($white,5);
+    //     @include setTransition;
+    //   }
+    // }
+
+    // & .VueCarousel-navigation-prev {
+    //   left: rem-calc(10) !important;
+    //   transform: none !important;
+    // }
+    // & .VueCarousel-navigation-next {
+    //   right: rem-calc(10) !important;
+    //   transform: none !important;
+    // }
+    //
+    // & .VueCarousel-navigation-button {
+    //   margin: 0 !important;
+    //   top: calc(50% - 100px) !important;
+    // }
+}
+
+.VueCarousel {
+    margin-bottom: rem-calc(56);
+    &-navigation {
+        display: none;
+
+        @include medium {
+            display: block;
+        };
+    }
+
+    &-slide {
+        margin-left: rem-calc(2px);
+        margin-right: rem-calc(2px);
+    }
+}
+
+
+
+/*
+** Agile Slider
+*/
+.carousel {
+    &--icon {
+        width: rem-calc(25);
+        height: rem-calc(25);
+        fill: $white;
+        @include setTransition;
+
+        @include medium {
+            width: rem-calc(30);
+            height: rem-calc(30);
+        };
+        @include large {
+            width: rem-calc(40);
+            height: rem-calc(40);
+        };
+
+        &:focus {
+            fill: $white;
+        }
+        &:hover, &:active {
+            fill: darken($white,15);
+            @include setTransition;
+        }
+    }
+
+    &--slide {
+        position: relative;
+        height: rem-calc(300);
+    }
+}
+
+
+.agile {
+    position: relative;
+    height: rem-calc(400px);
+
+    @include medium {
+        height: rem-calc(400px);
+    };
+    @include large {
+        height: rem-calc(500px);
+    };
+
+    &__track {
+        position: relative;
+    }
+
+    &__list,
+    &__track {
+        height: 100%;
+    }
+
+    &__slide {
+
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        & img {
+            object-fit: cover
+        }
+
+        @include medium {
+            height: 100%;
+            & img {
+                width: 100%;
+                height: auto;
+            }
+        };
+    }
+
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+
+        @include medium {
+            top: calc(50% - 20px);
+        };
+
+        &--prev {
+            left: rem-calc(10);
+        }
+        &--next {
+            right: rem-calc(10);
+        }
+    }
+}
