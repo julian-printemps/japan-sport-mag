@@ -37,6 +37,36 @@
     }
 }
 
+.button_subscribe {
+    display: inline-block;
+    position: relative;
+    padding: rem-calc(10) rem-calc(10) rem-calc(10) rem-calc(40);
+    color: $black;
+    border: 1px solid $black;
+    border-radius: 0;
+    @include setTransition;
+    @include fts(16,16);
+    cursor: pointer;
+
+    & .icon {
+        position: absolute;
+        top: calc(50% - 10px);
+        left: rem-calc(10);
+        width: rem-calc(20);
+        height: rem-calc(20);
+        fill: $black;
+        @include setTransition;
+    }
+
+    &:hover, &:active {
+        color: $green_01;
+        border-color: $green_01;
+        & .icon {
+            fill: $green_01;
+            @include setTransition;
+        }
+    }
+}
 
 .button_next {
     position: absolute;

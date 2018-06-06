@@ -3,6 +3,10 @@
     padding-bottom: rem-calc(60);
     border-top: 1px solid $grey_01;
     &.news { border-top: none; }
+    &.stories {
+        padding-top: 0;
+        padding-bottom: rem-calc(100);
+    }
 
     &--title {
         @include fts(24,24);

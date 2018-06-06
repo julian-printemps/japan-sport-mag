@@ -1,0 +1,7 @@
+.wrapper {
+    padding-top: rem-calc(58);
+
+    @include medium {
+        padding-top: rem-calc(58);
+    }
+}

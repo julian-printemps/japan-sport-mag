@@ -1,8 +1,13 @@
 <template>
-    <div :class="headerClass">
+    <header :class="headerClass">
         <div class="container">
-            <div class="columns nav--holder is-desktop">
-                <nav class="column nav">
+            <section class="columns nav--holder is-desktop">
+                <h1 class="column is-narrow">
+                    <!-- <img src="/static/logo.png" alt="Japan Sport Magazine"> -->
+                    JSM
+                    <strong class="seo">Japan Sport Magazine</strong>
+                </h1>
+                <nav class="nav column is-auto">
                     <div class="button_menu--holder">
                         <button type="button" name="button_menu" :class="buttonMenuClass" v-on:click="toggleMenu">
                             <svg class="icon icon-open-button"><use xlink:href="#icon-open-button"></use></svg>
@@ -12,34 +17,40 @@
 
                     <ul :class="menuClass">
                         <li class="column is-narrow">
-                            <a href="#news" title="News" v-smooth-scroll="{ duration: 1000 }">
-                                News
-                            </a>
+                            <router-link :to="{ name: navRoutes.home }">Home</router-link>
                         </li>
                         <li class="column is-narrow">
-                            <a href="#projects" title="Projects" v-smooth-scroll="{ duration: 1000 }">
-                                Projects
-                            </a>
+                            <router-link :to="{ name: navRoutes.about }">About</router-link>
                         </li>
                         <li class="column is-narrow">
-                            <a href="#about" title="About" v-smooth-scroll="{ duration: 1000 }">
-                                About
-                            </a>
+                            <router-link :to="{ name: navRoutes.partners }">Partners</router-link>
                         </li>
                         <li class="column is-narrow">
-                            <a href="#contact" title="Contact" v-smooth-scroll="{ duration: 1000 }">
-                                Contact
-                            </a>
+                            <router-link :to="{ name: navRoutes.archives }">Archives</router-link>
                         </li>
                         <li class="column is-narrow">
-                            <router-link v-if="$route.meta.lang == 'ja'" :to="{ name: 'Home' }" class="lang-switch">English</router-link>
-                            <router-link v-else :to="{ name: 'HomeJa' }" class="lang-switch">日本語</router-link>
+                            <router-link :to="{ name: navRoutes.contact }">Contact</router-link>
+                        </li>
+                        <li class="column is-narrow">
+                            <router-link :to="{ name: currentRoute }" class="lang-switch">
+                                <template v-if="lang === 'ja'">English</template>
+                                <template v-else>日本語</template>
+                            </router-link>
+                            <!--<button type="button" name="lang-switch" class="lang-switch" @click="switchLang()">-->
+                                <!--<template v-if="lang === 'ja'">English</template>-->
+                                <!--<template v-else>日本語</template>-->
+                            <!--</button>-->
                         </li>
                     </ul>
                 </nav>
-            </div>
+                <div class="column is-narrow">
+                    <button type="button" name="subscribe" class="button_subscribe">
+                        <svg class="icon icon-envelope-o"><use xlink:href="#icon-envelope-o"></use></svg>Subcribe
+                    </button>
+                </div>
+            </section>
         </div>
-    </div>
+    </header>
 </template>
 
 <script>
@@ -56,6 +67,26 @@ export default {
     },
 
     computed: {
+        lang () {
+            return this.$route.meta.lang
+        },
+        navRoutes () {
+            return {
+                home: 'Home-' + this.lang,
+                about: 'About-' + this.lang,
+                partners: 'Partners-' + this.lang,
+                archives: 'Archives-' + this.lang,
+                contact: 'Contact-' + this.lang
+            }
+        },
+        currentRoute () {
+            if (this.lang === 'ja') {
+                return this.$route.meta.name + '-en'
+            } else {
+                return this.$route.meta.name + '-ja'
+            }
+        },
+
         headerClass () {
             if (this.showMenu) {
                 return 'navigation fade_in_intro is-active'
@@ -93,6 +124,10 @@ export default {
             } else {
                 this.showMenu = true
             }
+        },
+        switchLang () {
+            this.lang = (this.lang === 'ja') ? 'en' : 'ja'
+            this.$router.push({name: this.currentRoute})
         }
     }
 }

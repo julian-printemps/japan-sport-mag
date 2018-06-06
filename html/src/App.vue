@@ -1,20 +1,23 @@
 <template>
     <div id="app">
         <svgsprites></svgsprites>
+        <navigation></navigation>
+
         <router-view/>
 
-        <svg class="fade_in_intro icon icon-border-top-left"><use xlink:href="#icon-border-top-left"></use></svg>
-        <svg class="fade_in_intro icon icon-border-top-right"><use xlink:href="#icon-border-top-right"></use></svg>
-        <svg class="fade_in_intro icon icon-border-bottom-left"><use xlink:href="#icon-border-bottom-left"></use></svg>
-        <svg class="fade_in_intro icon icon-border-bottom-right"><use xlink:href="#icon-border-bottom-right"></use></svg>
+        <footer-tag></footer-tag>
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import Navigation from '@/components/Navigation'
 import SvgSprites from '@/components/SvgSprites'
+import Footer from '@/components/Footer'
 
+Vue.component('navigation', Navigation)
 Vue.component('svgsprites', SvgSprites)
+Vue.component('footer-tag', Footer)
 
 export default {
     name: 'App',

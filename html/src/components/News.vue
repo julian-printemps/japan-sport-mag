@@ -43,18 +43,18 @@ export default {
     methods: {
         fetchData () {
             axios.get('ja/wp-json/wp/v2/news?filter[posts_per_page]=3&filter[orderby]=date&order=desc')
-            .then(response => {
-                this.newsDataJA = response.data
-                console.log(this.newsData)
-            })
-            .catch(e => { console.log(e) })
+                .then(response => {
+                    this.newsDataJA = response.data
+                    console.log(this.newsData)
+                })
+                .catch(e => { console.log(e) })
 
             axios.get('wp-json/wp/v2/news?filter[posts_per_page]=3&filter[orderby]=date&order=desc')
-            .then(response => {
-                this.newsData = response.data
-                console.log(this.newsData)
-            })
-            .catch(e => { console.log(e) })
+                .then(response => {
+                    this.newsData = response.data
+                    console.log(this.newsData)
+                })
+                .catch(e => { console.log(e) })
         }
     }
 }

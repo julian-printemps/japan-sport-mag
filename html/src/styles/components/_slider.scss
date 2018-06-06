@@ -48,8 +48,6 @@
     }
 
     &-slide {
-        margin-left: rem-calc(2px);
-        margin-right: rem-calc(2px);
     }
 }
 
@@ -111,7 +109,7 @@
     }
 
     &__slide {
-
+        transition: opacity 600ms ease-in-out !important;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -129,22 +127,40 @@
         };
     }
 
-    &__arrow {
-        position: absolute;
-        top: 50%;
-        background-color: transparent;
-        border: 0;
-        cursor: pointer;
+    &__dots {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        margin: 20px 0;
+        padding: 0;
+        text-align: center;
+        white-space: nowrap;
+    }
 
-        @include medium {
-            top: calc(50% - 20px);
-        };
+    &__dot {
+        margin: 0 10px;
 
-        &--prev {
-            left: rem-calc(10);
+        button {
+            background-color: #eee;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: block;
+            height: 10px;
+            width: 10px;
+            padding: 0;
+            font-size: 0;
+            line-height: 0;
+            margin: 0;
+            transition-duration: .3s;
         }
-        &--next {
-            right: rem-calc(10);
+
+        &--current,
+        &:hover {
+            button {
+                background-color: #888;
+            }
         }
     }
 }

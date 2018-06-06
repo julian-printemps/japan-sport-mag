@@ -133,14 +133,14 @@ export default {
                     subject: subject,
                     message: body
                 })
-                .then(response => {
-                    if (response.data === true) {
-                        window.setTimeout(this.removeSpinner, 200)
-                    } else {
-                        console.log(response.data)
-                    }
-                })
-                .catch(e => { this.errors.push(e) })
+                    .then(response => {
+                        if (response.data === true) {
+                            window.setTimeout(this.removeSpinner, 200)
+                        } else {
+                            console.log(response.data)
+                        }
+                    })
+                    .catch(e => { this.errors.push(e) })
             } else {
                 console.log('Robot spotted!')
             }

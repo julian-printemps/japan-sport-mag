@@ -24,7 +24,7 @@
     }
 
     @include medium {
-        position: sticky;
+        position: fixed;
         padding-top: 0;
         padding-top: rem-calc(10);
         padding-bottom: rem-calc(10);
@@ -63,7 +63,7 @@
             & > a {
                 position: relative;
                 display: inline-block;
-                color: $red_01;
+                color: $black;
                 @include fts(13,13);
                 text-transform: uppercase;
                 margin: 0;
@@ -85,7 +85,7 @@
                     left: 0;
                     width: 0;
                     height: 1px;
-                    background-color: $red_01;
+                    background-color: $black;
                     @include setTransition;
                 }
 
@@ -95,30 +95,32 @@
                         @include setTransition;
                     }
                 }
+            }
+            & > .lang-switch {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                @include fts(12,12);
+                @include setTransition;
+                color: $black;
+                margin-left: rem-calc(20);
+                border: none;
+                border-left: 1px solid $grey_03;
+                cursor: pointer;
 
-                &.lang-switch {
-                    position: absolute;
-                    bottom: 0;
-                    right: 0;
-                    @include fts(12,12);
+                @include medium {
+                    position: relative;
+                    bottom: initial;
+                    right: initial;
+                };
+
+                &:hover, &:active {
+                    color: $grey_02;
                     @include setTransition;
-                    margin-left: rem-calc(20);
-                    border-left: 1px solid $red_alpha_01;
+                }
 
-                    @include medium {
-                        position: relative;
-                        bottom: initial;
-                        right: initial;
-                    };
-
-                    &:hover, &:active {
-                        color: $red_alpha_02;
-                        @include setTransition;
-                    }
-
-                    &:after {
-                        display: none;
-                    }
+                &:after {
+                    display: none;
                 }
             }
         }
