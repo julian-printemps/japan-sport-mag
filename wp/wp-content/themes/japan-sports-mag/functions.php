@@ -23,7 +23,7 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 function custom_menu_page_removing() {
 	remove_menu_page( 'edit.php' );
-	remove_menu_page( 'edit.php?post_type=page' );
+	// remove_menu_page( 'edit.php?post_type=page' );
 	remove_menu_page( 'edit-comments.php' );
 	remove_menu_page( 'link-manager.php' );
 }
@@ -51,6 +51,11 @@ add_action( 'rest_api_init', function() {
 		return $value;
 
 	});
+
+	register_rest_route( 'japan-sports-mag/v1', '/send-email', array(
+		'methods' => 'POST',
+		'callback' => 'send_email_func',
+	) );
 }, 15 );
 
 
@@ -58,25 +63,25 @@ add_action( 'rest_api_init', function() {
 /*-------------------------------------------*/
 /*	Custom post type _ news
 /*-------------------------------------------*/
-add_post_type_support( 'news', 'front-end-editor' );
-
-add_action( 'init', 'jul_news_create_post_type', 0 );
-function jul_news_create_post_type() {
-	$Label = 'News';
-	register_post_type( 'news', /* post-type */
-	array(
-		'labels' => array(
-			'name' => $Label,
-			'singular_name' => $Label
-		),
-		'public' => true,
-		'menu_position' =>5,
-		'has_archive' => true,
-		'show_in_rest' => true,
-		'supports' => array('title','editor','excerpt','thumbnail','author')
-	)
-);
-}
+// add_post_type_support( 'news', 'front-end-editor' );
+//
+// add_action( 'init', 'jul_news_create_post_type', 0 );
+// function jul_news_create_post_type() {
+// 	$Label = 'News';
+// 	register_post_type( 'news', /* post-type */
+// 	array(
+// 		'labels' => array(
+// 			'name' => $Label,
+// 			'singular_name' => $Label
+// 		),
+// 		'public' => true,
+// 		'menu_position' =>5,
+// 		'has_archive' => true,
+// 		'show_in_rest' => true,
+// 		'supports' => array('title','editor','excerpt','thumbnail','author')
+// 	)
+// );
+// }
 
 /*-------------------------------------------*/
 /*	Custom post type _ stories
@@ -130,8 +135,8 @@ function jul_partners_create_post_type() {
 		array(
 			'hierarchical' => true,
 			'update_count_callback' => '_update_post_term_count',
-			'label' => $galleryLabel._x(' category','admin menu'),
-			'singular_label' => $galleryLabel._x(' category','admin menu'),
+			'label' => _x('Category','admin menu'),
+			'singular_label' => _x('Category','admin menu'),
 			'public' => true,
 			'show_in_rest' => true,
 			'show_ui' => true
@@ -161,4 +166,23 @@ function jul_issues_create_post_type() {
 		'supports' => array('title','editor','excerpt','thumbnail','author')
 	)
 );
+}
+
+
+
+
+
+function send_email_func( WP_REST_Request $request ) {
+	$to = 'julian.printemps@gmail.com';
+	$subject = 'Subscription';
+	$body = 'New subscription';
+	$email = $request['email'];
+	$name = $request['name'];
+	$headers = array(
+		'MIME-Version: 1.0',
+		'Content-Type: text/html; charset=UTF-8',
+		'From: '.$name.' <'.$email.'>'
+	);
+	wp_mail( $to, $subject, $body, $headers );
+	return 'Mail sent';
 }

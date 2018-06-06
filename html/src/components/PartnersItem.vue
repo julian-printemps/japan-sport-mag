@@ -1,6 +1,6 @@
 <template>
     <article class="partner_card">
-        <h3 class="partner_card--title">{{partner.title.rendered}}</h3>
+        <!--<h3 class="partner_card&#45;&#45;title">{{partner.title.rendered}}</h3>-->
         <figure class="partner_card--image">
             <img :src="partner.acf.partner_logo" :alt="partner.title.rendered">
         </figure>

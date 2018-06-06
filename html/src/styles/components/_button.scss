@@ -68,6 +68,22 @@
     }
 }
 
+.button_download {
+    @extend .button_subscribe;
+    padding: rem-calc(14) rem-calc(14) rem-calc(14) rem-calc(50);
+    @include fts(18,18);
+    font-weight: 500;
+
+    &--holder {
+        //position: absolute;
+        //left: 0;
+        //bottom: rem-calc(60);
+        width: 100%;
+        text-align: center;
+        margin-top: rem-calc(100);
+    }
+}
+
 .button_next {
     position: absolute;
     display: inline-block;

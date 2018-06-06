@@ -144,4 +144,17 @@
         width: 100%;
         margin: 0;
     }
+
+    &--list,
+    &--section {
+        &.columns {
+            margin-left: -0.5rem;
+            margin-right: -0.5rem;
+            margin-top: -0.5rem;
+            margin-bottom: -0.5rem;
+        }
+        & .column {
+            padding: 0.5rem;
+        }
+    }
 }

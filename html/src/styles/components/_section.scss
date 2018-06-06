@@ -28,6 +28,11 @@
 
         @include medium {
             margin-bottom: rem-calc(60);
+            text-align: left;
+
+            & strong {
+                padding-left: 0;
+            }
         };
     }
 }

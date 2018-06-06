@@ -109,7 +109,7 @@
     }
 
     &__slide {
-        transition: opacity 600ms ease-in-out !important;
+        transition: opacity 800ms ease-in-out !important;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -125,6 +125,10 @@
                 height: auto;
             }
         };
+
+        //.partner_card--section & {
+        //    transition: transform 1000ms ease-in-out !important;
+        //}
     }
 
     &__dots {
