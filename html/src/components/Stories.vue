@@ -5,6 +5,12 @@
                 <stories-item :story="story"></stories-item>
             </div>
         </agile>
+
+        <!--<carousel v-if="storiesData && storiesDataJA" :per-page="1" :loop="true" :speed="800" :autoplay="true">-->
+            <!--<slide v-for="story in currentData" :key="story.id" class="slide" :style="{ 'background-image': 'url(' + story.story_image + ')' }">-->
+                <!--<stories-item :story="story"></stories-item>-->
+            <!--</slide>-->
+        <!--</carousel>-->
     </div>
 </template>
 
@@ -13,7 +19,9 @@ import Vue from 'vue'
 import axios from '@/services/axios.js'
 import StoriesItem from '@/components/StoriesItem'
 import VueAgile from 'vue-agile'
+import VueCarousel from 'vue-carousel'
 
+Vue.use(VueCarousel)
 Vue.use(VueAgile)
 Vue.component('stories-item', StoriesItem)
 
@@ -53,7 +61,7 @@ export default {
 
     methods: {
         fetchData () {
-            axios.get('ja/wp-json/wp/v2/stories?filter[posts_per_page]=1&filter[orderby]=date&order=desc')
+            axios.get('wp-json/wp/v2/stories?filter[posts_per_page]=1&filter[orderby]=date&order=desc&lang=ja')
                 .then(response => {
                     this.storiesDataJA = response.data[0].acf.stories_list
                     console.log(this.storiesData)

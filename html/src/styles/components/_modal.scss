@@ -1,0 +1,115 @@
+/*
+** modal
+*/
+.modal {
+    position: relative;
+    margin: 0 auto;
+    z-index: 5500;
+    top: rem-calc(50);
+    background-color: $white;
+    border-radius: 6px;
+    @include boxShadow;
+     opacity: 0;
+    opacity: 1;
+    margin-bottom: rem-calc(50px);
+
+     .active & {
+       animation: fade_in_intro 0.5s forwards;
+     }
+
+    width: rem-calc(320);
+    @include medium {
+        width: rem-calc(564);
+    };
+    @include large {
+        width: rem-calc(940);
+    };
+
+    // holder
+    &--holder {
+        display: none;
+        overflow-y: auto;
+        position: fixed;
+        z-index: 5000;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+
+        &.active {
+            display: block;
+
+            @include medium {
+                display: flex;
+                align-items: center;
+            };
+        }
+    }
+
+    // inner
+    &--inner {
+        position: relative;
+        padding: rem-calc(60) rem-calc(40) rem-calc(60);
+
+        @include medium {
+            padding: rem-calc(80) rem-calc(60) rem-calc(80);
+        }
+    }
+
+    // close
+    &--close {
+        position: absolute;
+        top: rem-calc(-30);
+        right: rem-calc(-10);
+        background-color: transparent;
+        padding: rem-calc(5);
+        border: none;
+        cursor: pointer;
+
+        @include medium {
+            top: rem-calc(-40);
+            padding: rem-calc(10);
+        };
+
+        & .icon {
+            width: rem-calc(25);
+            height: rem-calc(25);
+            fill: $white;
+            @include setTransition;
+        }
+
+        &:active, &:focus, &:hover {
+            background-color: transparent;
+            border: none;
+        }
+
+        &:active, &:hover {
+            & .icon {
+                fill: $green_01;
+                @include setTransition;
+            }
+        }
+    }
+
+    // overlay
+    &--overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        background-color: rgba(0,0,0,0.7);
+        z-index: 5000;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+
+        .active & {
+            display: block;
+            animation: fade_in_intro 0.5s forwards;
+        }
+    }
+}
+
+@include keyframes(fade_in_intro) {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

@@ -1,11 +1,8 @@
 .sns_block {
     display: none;
     position: absolute;
-    //new
     top: rem-calc(10);
     right: rem-calc(10);
-    //old
-    // bottom: rem-calc(40);
 
     width: 100%;
     opacity: 0;
@@ -20,14 +17,11 @@
         right: rem-calc(40);
     };
 
-    //new
     & .is-right { justify-content: flex-end; }
-    //old
-    // & .is-right { justify-content: center; }
 
     &--link {
         display: inline-block;
-        background-color: $red_01;
+        background-color: $black;
         padding: rem-calc(10);
         margin: 0 rem-calc(2);
         line-height: 0;
@@ -40,7 +34,7 @@
         }
 
         &:hover, &:active, &:focus {
-            background-color: darken($red_01, 10);
+            background-color: $green_01;
             @include setTransition;
         }
     }
@@ -56,17 +50,24 @@
 .last_issue {
     font-family: $font-default;
     &--title {
-        @include fts(22,26);
+        @include fts(20,24);
         font-weight: bold;
         margin-bottom: rem-calc(40);
+        padding-top: rem-calc(20);
+        @include xmedium {
+            @include fts(24,28);
+        }
     }
 
     &--main {
         position: relative;
-        padding-left: rem-calc(40);
-        padding-right: rem-calc(40);
-
+        padding-left: rem-calc(20);
+        padding-right: rem-calc(20);
         @include medium {
+            padding-left: rem-calc(40);
+            padding-right: rem-calc(40);
+        }
+        @include xmedium {
             padding-left: rem-calc(60);
             padding-right: rem-calc(60);
         }
@@ -74,12 +75,24 @@
 
     &--content {
         @include fts(16,22);
+        @include xmedium {
+            @include fts(18,24);
+        }
 
         & ul {
             & li {
                 position: relative;
                 padding-left: rem-calc(16);
-                margin-bottom: rem-calc(20);
+                margin-bottom: rem-calc(30);
+
+                & strong {
+                    display: block;
+                    @include fts(14,20);
+                    font-weight: normal;
+                    @include xmedium {
+                        @include fts(16,22);
+                    }
+                }
 
                 &:before {
                     position: absolute;
@@ -92,6 +105,189 @@
                     background-color: $green_01;
                 }
             }
+        }
+    }
+}
+
+
+.magazine_grid {
+    margin-top: rem-calc(40);
+    padding: 0 rem-calc(0);
+    @include medium {
+        padding: 0 rem-calc(20);
+    }
+    @include xmedium {
+        margin-top: rem-calc(0);
+        padding: 0 rem-calc(40);
+    }
+
+    &--row {
+        width: rem-calc(300);
+        &.columns.is-gapless { margin: 0 auto; }
+        @include xmedium {
+            width: rem-calc(600);
+        }
+
+        & .order {
+            &-1 { order: 1; }
+            &-2 { order: 2; }
+            &-3 { order: 3; }
+            &-4 { order: 4; }
+            &-5 { order: 5; }
+        }
+        & .medium-order {
+            &-1 {
+                @include xmedium {
+                    order: 1;
+                }
+            }
+            &-2 {
+                @include xmedium {
+                    order: 2;
+                }
+            }
+            &-3 {
+                @include xmedium {
+                    order: 3;
+                }
+            }
+            &-4 {
+                @include xmedium {
+                    order: 4;
+                }
+            }
+            &-5 {
+                @include xmedium {
+                    order: 5;
+                }
+            }
+        }
+    }
+
+    &--cell {
+        //display: table-cell;
+        position: relative;
+        width: rem-calc(150);
+        height: rem-calc(150);
+        padding: rem-calc(10);
+
+        @include medium {
+            width: rem-calc(200);
+            height: rem-calc(200);
+            padding: rem-calc(20);
+        }
+
+        &.archives {
+            width: rem-calc(300);
+            background-image: url(/static/img/trianglify-2.png);
+            background-position: center;
+            background-size: cover;
+            opacity: 1;
+            @include setTransition;
+
+            &:hover, &:active {
+                opacity: 0.8;
+                @include setTransition;
+            }
+
+            @include medium {
+                width: rem-calc(400);
+            }
+        }
+        &.download {
+            background: rgb(34,193,195);
+            background: linear-gradient(135deg, rgba(34,193,195,1) 0%, rgba(10,126,106,1) 100%);
+            opacity: 1;
+            @include setTransition;
+
+            &:hover, &:active {
+                opacity: 0.8;
+                @include setTransition;
+            }
+
+            & .icon {
+                position: absolute;
+                top: calc(50% - 25px);
+                left: calc(50% - 25px);
+                width: rem-calc(50);
+                height: rem-calc(50);
+                fill: $white;
+            }
+            @include xmedium {
+                & .icon {
+                    top: calc(50% - 35px);
+                    left: calc(50% - 35px);
+                    width: rem-calc(70);
+                    height: rem-calc(70);
+                }
+            }
+        }
+        &.next_issue {
+            background: rgb(251,251,251);
+            background: linear-gradient(135deg, rgba(251,251,251,1) 18%, rgba(235,235,235,1) 100%);
+        }
+        &.about {
+            background-color: $grey_01;
+            @include setTransition;
+            &:hover, &:active {
+                background-color: rgba($grey_01,0.4);
+                @include setTransition;
+            }
+        }
+        &.contact {
+            background-color: $grey_04;
+            @include setTransition;
+
+            &:hover, &:active {
+                background-color: rgba($grey_04,0.5);
+                @include setTransition;
+            }
+        }
+    }
+
+    &--link {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        color: $black;
+
+        .archives & {
+            color: $white;
+        }
+
+        & strong {
+            display: block;
+            width: 100%;
+            text-align: center;
+            @include fts(18,18);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 400;
+            @include setTransition;
+
+            @include xmedium {
+                @include fts(24,24);
+            }
+        }
+    }
+
+    &--issue {
+        color: $black;
+
+        &--label {
+            position: absolute;
+            top: rem-calc(40);
+            left: rem-calc(30);
+            @include fts(16,16);
+        }
+        &--date {
+            position: absolute;
+            bottom: rem-calc(40);
+            right: rem-calc(30);
+            @include fts(22,22);
         }
     }
 }

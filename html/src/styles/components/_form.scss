@@ -1,7 +1,7 @@
 .form {
     padding: rem-calc(20);
 
-    @include medium {
+    @include xmedium {
         padding: rem-calc(20) rem-calc(30);
     };
     @include large {
@@ -50,5 +50,61 @@
         @include medium {
             @include fts(16,26);
         }
+    }
+}
+
+
+.subscribe_form {
+    &.columns.is-gapless {
+        margin-top: rem-calc(40);
+
+        @include xmedium {
+            margin-top: rem-calc(80);
+        }
+    }
+
+    &--label {
+        position: relative;
+        display: block;
+        margin: 0 0 rem-calc(10);
+        padding: 0;
+
+        @include xmedium {
+            margin: 0 rem-calc(4) rem-calc(10);
+        }
+
+        & .input {
+            display: block;
+            border-radius: 0;
+            border: 1px solid $black;
+            box-shadow: none;
+            height: rem-calc(52);
+            padding: rem-calc(7) rem-calc(10) rem-calc(7) rem-calc(40);
+            @include setTransition;
+
+            &.no-icon {
+                padding-left: rem-calc(10);
+            }
+
+            &:focus {
+                @include setTransition;
+                @include boxShadow;
+            }
+        }
+
+        & .icon {
+            position: absolute;
+            z-index: 10;
+            top: calc(50% - 10px);
+            left: rem-calc(10);
+            width: rem-calc(20);
+            height: rem-calc(20);
+            fill: $black;
+        }
+    }
+
+    .columns.is-gapless > &--button.column {
+        margin-top: rem-calc(20);
+        text-align: center;
     }
 }

@@ -1,13 +1,14 @@
 <template>
     <header :class="headerClass">
         <div class="container">
-            <section class="columns nav--holder is-desktop">
-                <h1 class="column is-narrow">
-                    <!-- <img src="/static/logo.png" alt="Japan Sport Magazine"> -->
-                    JSM
+            <section class="columns nav--holder is-mobile is-multiline is-gapless">
+                <h1 class="column is-12-mobile is-narrow-tablet">
+                    <router-link :to="{ name: navRoutes.home }" title="Home">
+                        <img src="/static/img/logo/logo-2.png" class="logo" alt="Japan Sport Magazine">
+                    </router-link>
                     <strong class="seo">Japan Sport Magazine</strong>
                 </h1>
-                <nav class="nav column is-auto">
+                <nav class="nav column is-12-mobile is-auto-tablet">
                     <div class="button_menu--holder">
                         <button type="button" name="button_menu" :class="buttonMenuClass" v-on:click="toggleMenu">
                             <svg class="icon icon-open-button"><use xlink:href="#icon-open-button"></use></svg>
@@ -17,52 +18,59 @@
 
                     <ul :class="menuClass">
                         <li class="column is-narrow">
-                            <router-link :to="{ name: navRoutes.home }">Home</router-link>
+                            <router-link :to="{ name: navRoutes.home }" title="Home">Home</router-link>
                         </li>
                         <li class="column is-narrow">
-                            <router-link :to="{ name: navRoutes.about }">About</router-link>
+                            <router-link :to="{ name: navRoutes.about }" title="About">About</router-link>
                         </li>
                         <li class="column is-narrow">
-                            <router-link :to="{ name: navRoutes.partners }">Partners</router-link>
+                            <router-link :to="{ name: navRoutes.partners }" title="Partners">Partners</router-link>
                         </li>
                         <li class="column is-narrow">
-                            <router-link :to="{ name: navRoutes.archives }">Archives</router-link>
+                            <router-link :to="{ name: navRoutes.archives }" title="Archives">Archives</router-link>
                         </li>
                         <li class="column is-narrow">
-                            <router-link :to="{ name: navRoutes.contact }">Contact</router-link>
+                            <router-link :to="{ name: navRoutes.contact }" title="Contact">Contact</router-link>
                         </li>
                         <li class="column is-narrow">
                             <router-link :to="{ name: currentRoute }" class="lang-switch">
                                 <template v-if="lang === 'ja'">English</template>
                                 <template v-else>日本語</template>
                             </router-link>
-                            <!--<button type="button" name="lang-switch" class="lang-switch" @click="switchLang()">-->
-                                <!--<template v-if="lang === 'ja'">English</template>-->
-                                <!--<template v-else>日本語</template>-->
-                            <!--</button>-->
+                        </li>
+                        <li class="column is-12 is-hidden-tablet">
+                            <button type="button" name="subscribe" class="button_subscribe" @click="showModal()">
+                                <svg class="icon icon-envelope-o"><use xlink:href="#icon-envelope-o"></use></svg>Subcribe
+                            </button>
                         </li>
                     </ul>
                 </nav>
-                <div class="column is-narrow">
-                    <button type="button" name="subscribe" class="button_subscribe">
+                <div class="is-hidden-mobile column is-narrow">
+                    <button type="button" name="subscribe" class="button_subscribe" @click="showModal()">
                         <svg class="icon icon-envelope-o"><use xlink:href="#icon-envelope-o"></use></svg>Subcribe
                     </button>
                 </div>
             </section>
         </div>
+
+        <modal-subscribe :isActive="isActiveModal" v-on:closeModal="closeModal"></modal-subscribe>
     </header>
 </template>
 
 <script>
 import Vue from 'vue'
 import vueSmoothScroll from 'vue-smooth-scroll'
+import ModalSubscribe from '@/components/ModalSubscribe'
+
+Vue.component('modal-subscribe', ModalSubscribe)
 Vue.use(vueSmoothScroll)
 
 export default {
     name: 'navigation',
     data () {
         return {
-            showMenu: false
+            showMenu: false,
+            isActiveModal: false
         }
     },
 
@@ -128,6 +136,12 @@ export default {
         switchLang () {
             this.lang = (this.lang === 'ja') ? 'en' : 'ja'
             this.$router.push({name: this.currentRoute})
+        },
+        showModal () {
+            this.isActiveModal = true
+        },
+        closeModal () {
+            this.isActiveModal = false
         }
     }
 }

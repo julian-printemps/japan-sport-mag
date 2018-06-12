@@ -9,6 +9,7 @@
     &--holder {
         position: absolute;
         z-index: 2200;
+        top: rem-calc(10);
         right: rem-calc(10);
 
 
@@ -20,7 +21,7 @@
     & .icon {
         width: rem-calc(30);
         height: rem-calc(30);
-        fill: $red_01;
+        fill: $black;
 
         &-close-button {
             display: none;
@@ -37,7 +38,7 @@
     }
 }
 
-.button_subscribe {
+.button {
     display: inline-block;
     position: relative;
     padding: rem-calc(10) rem-calc(10) rem-calc(10) rem-calc(40);
@@ -47,6 +48,8 @@
     @include setTransition;
     @include fts(16,16);
     cursor: pointer;
+    font-family: $font-roboto;
+    background-color: $white;
 
     & .icon {
         position: absolute;
@@ -68,19 +71,62 @@
     }
 }
 
+.button_subscribe {
+    @extend .button;
+    margin-top: rem-calc(20);
+
+    @include xmedium {
+        margin-top: 0;
+    }
+
+    &.large {
+        padding: rem-calc(16) rem-calc(16) rem-calc(16) rem-calc(50);
+        @include fts(18,18);
+        text-transform: uppercase;
+
+        & .icon {
+            top: calc(50% - 12px);
+            left: rem-calc(12);
+            width: rem-calc(24);
+            height: rem-calc(24);
+        }
+    }
+}
+
 .button_download {
-    @extend .button_subscribe;
+    @extend .button;
     padding: rem-calc(14) rem-calc(14) rem-calc(14) rem-calc(50);
     @include fts(18,18);
     font-weight: 500;
 
     &--holder {
-        //position: absolute;
-        //left: 0;
-        //bottom: rem-calc(60);
         width: 100%;
         text-align: center;
         margin-top: rem-calc(100);
+    }
+}
+
+.button_alt {
+    @extend .button;
+    padding: rem-calc(14) rem-calc(14) rem-calc(14) rem-calc(50);
+    border: 1px solid $white;
+    color: $white;
+    background-color: transparent;
+    @include fts(18,18);
+    font-weight: 500;
+
+    & .icon { fill: $white; }
+
+    &:hover, &:active {
+        color: $black;
+        border-color: $black;
+        & .icon { fill: $black; }
+    }
+
+    &--holder {
+        width: 100%;
+        text-align: center;
+        margin-top: rem-calc(60);
     }
 }
 
@@ -97,14 +143,14 @@
     & .icon {
         width: rem-calc(40);
         height: rem-calc(40);
-        fill: $red_01;
+        fill: $black;
         transform: rotate(90deg);
         @include setTransition;
     }
 
     &:hover, &:active {
         & .icon {
-            fill: darken($red_01,10);
+            fill: darken($black,10);
             margin-top: rem-calc(5);
             @include setTransition;
         }
@@ -116,15 +162,15 @@
     position: relative;
     padding: 1rem 4rem 1rem 1rem;
     background-color: transparent;
-    color: $red_01;
+    color: $black;
     @include fts(20,20);
     text-transform: uppercase;
-    border: 1px solid $red_01;
+    border: 1px solid $black;
     cursor: pointer;
     @include setTransition;
 
     & .icon {
-        fill: $red_01;
+        fill: $black;
         position: absolute;
         top: calc(50% - 15px);
         right: 1rem;
@@ -136,7 +182,7 @@
 
     &:focus {
         background-color: transparent;
-        color: $red_01;
+        color: $black;
     }
 
     &:hover, &:active {

@@ -1,7 +1,17 @@
 .wrapper {
-    padding-top: rem-calc(58);
+    padding-top: rem-calc(54);
 
     @include medium {
-        padding-top: rem-calc(58);
+        padding-top: rem-calc(54);
+    }
+}
+
+.container {
+    padding-left: rem-calc(20);
+    padding-right: rem-calc(20);
+
+    @include medium {
+        padding-left: rem-calc(40);
+        padding-right: rem-calc(40);
     }
 }

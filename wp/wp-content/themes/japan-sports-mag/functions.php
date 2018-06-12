@@ -30,8 +30,8 @@ function custom_menu_page_removing() {
 add_action( 'admin_menu', 'custom_menu_page_removing' );
 
 
-/**
-* Only from certain origins
+/*
+** Set REST API
 */
 add_action( 'rest_api_init', function() {
 
@@ -40,8 +40,7 @@ add_action( 'rest_api_init', function() {
 
 		$origin = get_http_origin();
 		if ( $origin && in_array( $origin, array(
-			'http://localhost:8080',
-			'http://www.bropublishing.com'
+			'http://localhost:8080'
 		) ) ) {
 			header( 'Access-Control-Allow-Origin: ' . esc_url_raw( $origin ) );
 			header( 'Access-Control-Allow-Methods: GET' );
@@ -49,12 +48,16 @@ add_action( 'rest_api_init', function() {
 		}
 
 		return $value;
-
 	});
 
 	register_rest_route( 'japan-sports-mag/v1', '/send-email', array(
 		'methods' => 'POST',
 		'callback' => 'send_email_func',
+	) );
+
+	register_rest_route( 'japan-sports-mag/v1', '/subscribe', array(
+		'methods' => 'POST',
+		'callback' => 'subscribe_func',
 	) );
 }, 15 );
 
@@ -172,6 +175,21 @@ function jul_issues_create_post_type() {
 
 
 
+add_action('phpmailer_init','send_smtp_email');
+function send_smtp_email( $phpmailer )
+{
+	$phpmailer->isSMTP();
+	$phpmailer->Host       = SMTP_HOST;
+	$phpmailer->SMTPAuth   = SMTP_AUTH;
+	$phpmailer->Port       = SMTP_PORT;
+	$phpmailer->Username   = SMTP_USER;
+	$phpmailer->Password   = SMTP_PASS;
+	$phpmailer->SMTPSecure = SMTP_SECURE;
+	$phpmailer->From       = SMTP_FROM;
+	$phpmailer->FromName   = SMTP_NAME;
+}
+
+
 function send_email_func( WP_REST_Request $request ) {
 	$to = 'julian.printemps@gmail.com';
 	$subject = 'Subscription';
@@ -180,9 +198,53 @@ function send_email_func( WP_REST_Request $request ) {
 	$name = $request['name'];
 	$headers = array(
 		'MIME-Version: 1.0',
-		'Content-Type: text/html; charset=UTF-8',
-		'From: '.$name.' <'.$email.'>'
+		'Content-Type: text/html; charset=UTF-8'
 	);
 	wp_mail( $to, $subject, $body, $headers );
 	return 'Mail sent';
+}
+
+
+function subscribe_func( WP_REST_Request $request ) {
+	$data = [
+  	'email'     => $request['email'],
+    'status'    => 'subscribed',
+    'firstname' => $request['firstname'],
+    'lastname'  => $request['lastname'],
+	];
+	syncMailchimp($data);
+}
+
+function syncMailchimp($data) {
+	$apiKey = '9304710d5dec14c7a61bec4086033b0a-us18';
+  $listId = '7a83639333';
+
+	$memberId = md5(strtolower($data['email']));
+  $dataCenter = substr($apiKey,strpos($apiKey,'-')+1);
+  $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listId . '/members/' . $memberId;
+
+	$json = json_encode([
+    'email_address' => $data['email'],
+    'status'        => $data['status'], // "subscribed","unsubscribed","cleaned","pending"
+    'merge_fields'  => [
+        'FNAME'     => $data['firstname'],
+        'LNAME'     => $data['lastname']
+    ]
+  ]);
+
+	$ch = curl_init($url);
+
+  curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apiKey);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+
+  $result = curl_exec($ch);
+  $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  curl_close($ch);
+
+  return $httpCode;
 }

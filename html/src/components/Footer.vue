@@ -1,7 +1,12 @@
 <template>
     <footer class="fade_in_intro container">
-        <div class="columns is-centered">
-            <div class="footer column is-10 is-10-tablet is-8-desktop text-center">
+        <div class="columns is-centered is-multiline is-mobile">
+            <section class="footer column is-10 is-10-tablet is-8-desktop text-center">
+                <h2 class="footer--logo--holder">
+                    <img src="/static/img/logo/logo-1.png" class="footer--logo" alt="Japan Sport Magazine">
+                    <strong class="seo">Japan Sport Magazine</strong>
+                </h2>
+
                 <div class="sns_footer_block">
                     <ul class="columns is-gapless is-mobile is-center">
                         <li class="column is-narrow">
@@ -17,7 +22,7 @@
                 </div>
 
                 <p class="footer--credits">© 2018 Bro. Publishing</p>
-            </div>
+            </section>
         </div>
     </footer>
 </template>

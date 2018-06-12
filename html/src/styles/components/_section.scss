@@ -1,4 +1,5 @@
 .section {
+    font-family: $font-roboto;
     padding-top: rem-calc(60);
     padding-bottom: rem-calc(60);
     border-top: 1px solid $grey_01;
@@ -8,8 +9,19 @@
         padding-bottom: rem-calc(100);
     }
 
+    &.archives {
+        color: $white;
+        background: rgb(34,193,195);
+        background: linear-gradient(135deg, rgba(34,193,195,1) 0%, rgba(62,214,170,1) 47%, rgba(10,126,106,1) 100%);
+
+        & strong {
+            color: $white;
+            border-color: $white;
+        }
+    }
+
     &--title {
-        @include fts(24,24);
+        @include fts(20,20);
         font-weight: 400;
         margin-bottom: rem-calc(40);
         font-family: $font-roboto;
@@ -26,13 +38,87 @@
             border-bottom: 1px solid $main_text;
         }
 
-        @include medium {
+        @include xmedium {
+            @include fts(24,24);
+        }
+
+        .archives & {
+            @include xmedium {
+                text-align: center;
+                & strong {
+                    padding-left: rem-calc(18);
+                }
+            }
+        }
+
+        @include xmedium {
             margin-bottom: rem-calc(60);
             text-align: left;
 
             & strong {
                 padding-left: 0;
             }
+        };
+    }
+}
+
+.subscribe_section {
+    background-color: $white;
+    padding: rem-calc(60) rem-calc(40);
+    max-width: rem-calc(800);
+    margin: 0 auto;
+
+    @include medium {
+        padding: rem-calc(80) rem-calc(60);
+    }
+
+    &--holder {
+        background-image: url(/static/img/subscribe-bg.jpg);
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        padding: rem-calc(60) rem-calc(40);
+
+        @include medium {
+            padding: rem-calc(80) rem-calc(60);
+        }
+    }
+
+    &--title {
+        @include fts(18,20);
+        font-weight: 600;
+        margin-bottom: rem-calc(20);
+        font-family: $font-roboto;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 0.6em;
+
+        @include medium {
+            @include fts(20,22);
+        };
+
+        @include xmedium {
+            @include fts(24,26);
+            margin-bottom: rem-calc(10);
+        };
+    }
+
+    &--subtitle {
+        @include fts(13,15);
+        font-weight: 400;
+        margin-bottom: rem-calc(40);
+        font-family: $font-roboto;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 0.4em;
+
+        @include medium {
+            @include fts(15,17);
+        };
+
+        @include xmedium {
+            @include fts(18,20);
+            margin-bottom: rem-calc(60);
         };
     }
 }

@@ -11,7 +11,7 @@
             </div>
             <!--<article class="column is-12-mobile is-5-tablet" :style="{ 'background-image': 'url(' + selectedPartner.image + ')' }"></article>-->
             <div class="column is-12-mobile is-7-tablet">
-                <ul v-if="partners && partnersJA" class="partner_card--list columns is-multiline">
+                <ul v-if="partners && partnersJA" class="partner_card--list columns is-mobile is-multiline">
                     <li class="column is-one-third-mobile is-one-fifth-tablet" v-for="(partner, index) in currentData" :key="partner.id">
                         <partners-item :partner="partner" :index="index"></partners-item>
                     </li>
@@ -24,14 +24,14 @@
 <script>
 import Vue from 'vue'
 import axios from '@/services/axios.js'
-import PartnersItem from '@/components/PartnersItem'
+import PartnersItem from '@/components/HomePartnersItem'
 import VueAgile from 'vue-agile'
 
 Vue.use(VueAgile)
 Vue.component('partners-item', PartnersItem)
 
 export default {
-    name: 'about',
+    name: 'partners',
     data () {
         return {
             partners: null,
@@ -70,7 +70,7 @@ export default {
 
     methods: {
         fetchData () {
-            axios.get('ja/wp-json/wp/v2/partners?filter[posts_per_page]=15&filter[partners-tag]=home&filter[orderby]=date&order=desc')
+            axios.get('wp-json/wp/v2/partners?filter[posts_per_page]=15&filter[partners-tag]=home&filter[orderby]=date&order=desc&lang=ja')
                 .then(response => {
                     this.partnersJA = response.data
                     console.log(this.partnersJA)

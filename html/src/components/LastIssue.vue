@@ -49,7 +49,7 @@ export default {
 
     methods: {
         fetchData () {
-            axios.get('ja/wp-json/wp/v2/issues?filter[posts_per_page]=1&filter[orderby]=date&order=desc')
+            axios.get('wp-json/wp/v2/issues?filter[posts_per_page]=1&filter[orderby]=date&order=desc&lang=ja')
                 .then(response => {
                     this.pageDataJA = response.data[0]
                     console.log(this.pageDataJA)
@@ -59,6 +59,7 @@ export default {
                 .then(response => {
                     this.pageData = response.data[0]
                     console.log(this.pageData)
+                    this.$store.commit('setMagazine', this.pageData.acf.issue_file)
                 })
                 .catch(e => { console.log(e) })
         }
