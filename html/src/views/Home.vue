@@ -1,10 +1,10 @@
 <template>
     <main class="wrapper fade_in_intro">
-        <stories></stories>
-        <home-partners></home-partners>
+        <!--<stories></stories>-->
+        <!--<home-partners></home-partners>-->
         <last-issue></last-issue>
         <home-archives></home-archives>
-        <home-magazine></home-magazine>
+        <!--<home-magazine></home-magazine>-->
         <subscribe></subscribe>
         <!--<home-about></home-about>-->
     </main>

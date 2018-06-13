@@ -67,6 +67,7 @@
     padding: rem-calc(60) rem-calc(40);
     max-width: rem-calc(800);
     margin: 0 auto;
+    @include boxShadow;
 
     @include medium {
         padding: rem-calc(80) rem-calc(60);
@@ -91,7 +92,7 @@
         font-family: $font-roboto;
         text-transform: uppercase;
         text-align: center;
-        letter-spacing: 0.6em;
+        letter-spacing: 0.4em;
 
         @include medium {
             @include fts(20,22);
@@ -100,6 +101,7 @@
         @include xmedium {
             @include fts(24,26);
             margin-bottom: rem-calc(10);
+            letter-spacing: 0.6em;
         };
     }
 
@@ -110,7 +112,7 @@
         font-family: $font-roboto;
         text-transform: uppercase;
         text-align: center;
-        letter-spacing: 0.4em;
+        letter-spacing: 0.3em;
 
         @include medium {
             @include fts(15,17);
@@ -119,6 +121,7 @@
         @include xmedium {
             @include fts(18,20);
             margin-bottom: rem-calc(60);
+            letter-spacing: 0.4em;
         };
     }
 }

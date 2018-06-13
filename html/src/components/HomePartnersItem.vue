@@ -1,6 +1,5 @@
 <template>
     <article class="partner_card">
-        <!--<h3 class="partner_card&#45;&#45;title">{{partner.title.rendered}}</h3>-->
         <figure class="partner_card--image">
             <img :src="partner.acf.partner_logo" :alt="partner.title.rendered">
         </figure>
@@ -11,36 +10,10 @@
 export default {
     name: 'partners-item',
     props: {
-        partner: Object,
-        index: Number
+        partner: Object
     },
     data () {
         return {
-            isVisible: false,
-            isObvserved: false
-        }
-    },
-
-    computed: {
-        sectionClass () {
-            let classVal = 'partner_card--main'
-            if (this.index % 2 !== 0) {
-                classVal += ' odd'
-            }
-            if (this.isVisible || !this.isObvserved) {
-                classVal += ' is-visible'
-            }
-
-            return classVal
-        }
-    },
-
-    methods: {
-        visibilityChanged (isVisible, entry) {
-            this.isObvserved = true
-            if (!this.isVisible) {
-                this.isVisible = isVisible
-            }
         }
     }
 }

@@ -17,7 +17,9 @@
         top: calc(50% - 45px);
         left: calc(50% - 390px);
         width: rem-calc(800px);
-        @include fts(30,30);
+        @include fts(30,36);
+        font-weight: bold;
+        font-style: italic;
     };
 
     & span {
@@ -38,8 +40,15 @@
     & .ani12 { animation: 1s ease forwards 1.04s fade_in_intro; }
     & .ani13 { animation: 1s ease forwards 1.11s fade_in_intro; }
     & .ani14 { animation: 1s ease forwards 1.19s fade_in_intro; }
+    & .ani15 { animation: 1s ease forwards 1.27s fade_in_intro; }
+    & .ani16 { animation: 1s ease forwards 1.35s fade_in_intro; }
+    & .ani17 { animation: 1s ease forwards 1.43s fade_in_intro; }
+    & .ani18 { animation: 1s ease forwards 1.50s fade_in_intro; }
+    & .ani19 { animation: 1s ease forwards 1.58s fade_in_intro; }
+    & .ani20 { animation: 1s ease forwards 1.66s fade_in_intro; }
 
     & .is-bold { font-weight: bold; }
+    & .is-space { margin-right: rem-calc(10); }
     & .is-circle {
         display: inline-block;
         color: $red_01;

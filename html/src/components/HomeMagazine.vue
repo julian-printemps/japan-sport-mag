@@ -3,7 +3,7 @@
         <h2 class="section--title"><strong>magazine</strong></h2>
 
         <div class="columns is-mobile is-multiline">
-            <div v-if="magazine && magazineJA" class="column is-12-mobile is-auto-desktop" v-html="currentData.content.rendered">
+            <div v-if="magazine" class="column is-12-mobile is-auto-desktop" v-html="magazineIntro">
             </div>
 
             <div class="magazine_grid column is-12-mobile is-narrow-desktop">
@@ -39,8 +39,7 @@ export default {
     name: 'magazine',
     data () {
         return {
-            magazine: null,
-            magazineJA: null
+            magazine: null
         }
     },
 
@@ -52,11 +51,11 @@ export default {
         lang () {
             return this.$route.meta.lang
         },
-        currentData () {
+        magazineIntro () {
             if (this.$route.meta.lang === 'ja') {
-                return this.magazineJA
+                return this.magazine.acf.magazine_content_ja
             } else {
-                return this.magazine
+                return this.magazine.acf.magazine_content_en
             }
         },
         navRoutes () {
@@ -71,12 +70,6 @@ export default {
 
     methods: {
         fetchData () {
-            axios.get('wp-json/wp/v2/pages?slug=magazine&lang=ja')
-                .then(response => {
-                    this.magazineJA = response.data[0]
-                    console.log(this.magazineJA)
-                })
-                .catch(e => { console.log(e) })
             axios.get('wp-json/wp/v2/pages?slug=magazine')
                 .then(response => {
                     this.magazine = response.data[0]

@@ -2,6 +2,7 @@
     <div id="app">
         <svgsprites></svgsprites>
         <navigation></navigation>
+        <home-intro></home-intro>
 
         <router-view/>
 
@@ -14,6 +15,7 @@ import Vue from 'vue'
 import Navigation from '@/components/Navigation'
 import SvgSprites from '@/components/SvgSprites'
 import Footer from '@/components/Footer'
+import HomeIntro from '@/components/HomeIntro'
 
 Vue.component('navigation', Navigation)
 Vue.component('svgsprites', SvgSprites)
@@ -21,8 +23,9 @@ Vue.component('footer-tag', Footer)
 
 export default {
     name: 'App',
+    components: {HomeIntro},
     metaInfo: {
-        titleTemplate: '%s | BRO Publishing'
+        titleTemplate: '%s | Japan Sports Magazine'
     }
 }
 </script>

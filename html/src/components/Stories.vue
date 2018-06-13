@@ -1,7 +1,7 @@
 <template>
     <div id="stories" class="section stories">
-        <agile v-if="storiesData && storiesDataJA"  :options="sliderOption">
-            <div v-for="story in currentData" :key="story.id" class="slide" :style="{ 'background-image': 'url(' + story.story_image + ')' }">
+        <agile v-if="storiesData"  :options="sliderOption">
+            <div v-for="story in storiesData" :key="story.id" class="slide" :style="{ 'background-image': 'url(' + story.story_image + ')' }">
                 <stories-item :story="story"></stories-item>
             </div>
         </agile>
@@ -30,7 +30,6 @@ export default {
     data () {
         return {
             storiesData: null,
-            storiesDataJA: null,
             sliderOption: {
                 perPage: 1,
                 autoplay: true,
@@ -49,24 +48,8 @@ export default {
         this.fetchData()
     },
 
-    computed: {
-        currentData () {
-            if (this.$route.meta.lang === 'ja') {
-                return this.storiesDataJA
-            } else {
-                return this.storiesData
-            }
-        }
-    },
-
     methods: {
         fetchData () {
-            axios.get('wp-json/wp/v2/stories?filter[posts_per_page]=1&filter[orderby]=date&order=desc&lang=ja')
-                .then(response => {
-                    this.storiesDataJA = response.data[0].acf.stories_list
-                    console.log(this.storiesData)
-                })
-                .catch(e => { console.log(e) })
             axios.get('wp-json/wp/v2/stories?filter[posts_per_page]=1&filter[orderby]=date&order=desc')
                 .then(response => {
                     this.storiesData = response.data[0].acf.stories_list

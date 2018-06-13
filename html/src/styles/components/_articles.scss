@@ -125,30 +125,35 @@
 
     &--title {
         position: relative;
-        @include fts(16,16);
+        @include fts(14,14);
         color: $white;
         font-family: $font-default;
         font-weight: 600;
 
+        @include xmedium {
+            @include fts(16,16);
+        }
+
         & strong {
             display: inline-block;
-            width: rem-calc(26);
             position: relative;
-            @include fts(11,16);
+            top: rem-calc(-2);
+            @include fts(10,16);
             font-weight: 600;
             text-align: center;
-            margin-right: rem-calc(10);
+            margin-right: rem-calc(14);
+            margin-left: rem-calc(10);
 
             &:before {
                 position: absolute;
                 display: block;
                 content: '';
                 top: calc(50% - 14px);
-                left: rem-calc(-3);
+                left: rem-calc(-6);
                 width: rem-calc(28);
                 height: rem-calc(28);
                 border-radius: 50%;
-                border: 2px solid $white;
+                border: 1px solid $white;
             }
         }
     }

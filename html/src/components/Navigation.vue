@@ -20,18 +20,18 @@
                         <li class="column is-narrow">
                             <router-link :to="{ name: navRoutes.home }" title="Home">Home</router-link>
                         </li>
-                        <li class="column is-narrow">
-                            <router-link :to="{ name: navRoutes.about }" title="About">About</router-link>
-                        </li>
-                        <li class="column is-narrow">
-                            <router-link :to="{ name: navRoutes.partners }" title="Partners">Partners</router-link>
-                        </li>
-                        <li class="column is-narrow">
-                            <router-link :to="{ name: navRoutes.archives }" title="Archives">Archives</router-link>
-                        </li>
-                        <li class="column is-narrow">
-                            <router-link :to="{ name: navRoutes.contact }" title="Contact">Contact</router-link>
-                        </li>
+                        <!--<li class="column is-narrow">-->
+                            <!--<router-link :to="{ name: navRoutes.about }" title="About">About</router-link>-->
+                        <!--</li>-->
+                        <!--<li class="column is-narrow">-->
+                            <!--<router-link :to="{ name: navRoutes.partners }" title="Partners">Partners</router-link>-->
+                        <!--</li>-->
+                        <!--<li class="column is-narrow">-->
+                            <!--<router-link :to="{ name: navRoutes.archives }" title="Archives">Archives</router-link>-->
+                        <!--</li>-->
+                        <!--<li class="column is-narrow">-->
+                            <!--<router-link :to="{ name: navRoutes.contact }" title="Contact">Contact</router-link>-->
+                        <!--</li>-->
                         <li class="column is-narrow">
                             <router-link :to="{ name: currentRoute }" class="lang-switch">
                                 <template v-if="lang === 'ja'">English</template>

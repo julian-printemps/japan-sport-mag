@@ -16,7 +16,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "palt";
 	background-color: $body_background;
-	font-family: $font-alt;
+	font-family: $font-default;
 	letter-spacing: 0.1em;
 
 	&.no_scroll { overflow: hidden; }

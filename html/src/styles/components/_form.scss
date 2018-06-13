@@ -1,35 +1,3 @@
-.form {
-    padding: rem-calc(20);
-
-    @include xmedium {
-        padding: rem-calc(20) rem-calc(30);
-    };
-    @include large {
-        padding: rem-calc(20) rem-calc(40);
-    };
-
-    & .robotic { display: none; }
-
-    & .label {
-        font-family: $font-roboto;
-        font-weight: 500;
-    }
-
-    & .textarea {
-        resize: vertical;
-    }
-
-    & .input, & .textarea {
-        @include setTransition;
-        &:focus {
-            border-color: $red_01;
-            @include setTransition;
-            box-shadow: none;
-        }
-    }
-}
-
-
 .form_validation {
     padding-top: rem-calc(40);
 
@@ -107,4 +75,13 @@
         margin-top: rem-calc(20);
         text-align: center;
     }
+}
+
+
+.robotic {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    line-height: 0;
 }

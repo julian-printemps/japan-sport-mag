@@ -142,6 +142,9 @@
 
                 @include xmedium {
                     border-top: none;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    margin-left: rem-calc(10);
                     padding-top: rem-calc(10);
                     border-left: 1px solid $grey_03;
                 };

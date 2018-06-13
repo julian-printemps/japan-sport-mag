@@ -41,9 +41,10 @@ add_action( 'rest_api_init', function() {
 		$origin = get_http_origin();
 		if ( $origin && in_array( $origin, array(
 			'http://localhost:8080'
+			// 'http://www.japansportsmagazine.com'
 		) ) ) {
 			header( 'Access-Control-Allow-Origin: ' . esc_url_raw( $origin ) );
-			header( 'Access-Control-Allow-Methods: GET' );
+			header( 'Access-Control-Allow-Methods: GET, POST' );
 			header( 'Access-Control-Allow-Credentials: true' );
 		}
 
