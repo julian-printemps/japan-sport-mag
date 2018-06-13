@@ -6,18 +6,19 @@
         <home-archives></home-archives>
         <!--<home-magazine></home-magazine>-->
         <subscribe></subscribe>
-        <!--<home-about></home-about>-->
+        <home-advertiser></home-advertiser>
     </main>
 </template>
 
 <script>
 import Vue from 'vue'
-import Stories from '@/components/Stories'
-import HomePartners from '@/components/HomePartners'
-import LastIssue from '@/components/LastIssue'
-import HomeArchives from '@/components/HomeArchives'
-import HomeMagazine from '@/components/HomeMagazine'
+import Stories from '@/components/home/Stories'
+import HomePartners from '@/components/home/HomePartners'
+import LastIssue from '@/components/home/LastIssue'
+import HomeArchives from '@/components/home/HomeArchives'
+import HomeMagazine from '@/components/home/HomeMagazine'
 import Subscribe from '@/components/Subscribe'
+import HomeAdvertiser from '@/components/home/HomeAdvertiser'
 
 Vue.component('stories', Stories)
 Vue.component('home-partners', HomePartners)
@@ -25,6 +26,7 @@ Vue.component('last-issue', LastIssue)
 Vue.component('home-archives', HomeArchives)
 Vue.component('home-magazine', HomeMagazine)
 Vue.component('subscribe', Subscribe)
+Vue.component('home-advertiser', HomeAdvertiser)
 
 export default {
     name: 'Home',

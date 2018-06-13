@@ -24,7 +24,7 @@
 <script>
 import Vue from 'vue'
 import axios from '@/services/axios.js'
-import PartnersItem from '@/components/HomePartnersItem'
+import PartnersItem from '@/components/home/HomePartnersItem'
 import VueAgile from 'vue-agile'
 
 Vue.use(VueAgile)

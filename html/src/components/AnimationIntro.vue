@@ -26,6 +26,6 @@
 
 <script>
 export default {
-    name: 'home-intro'
+    name: 'anime-intro'
 }
 </script>

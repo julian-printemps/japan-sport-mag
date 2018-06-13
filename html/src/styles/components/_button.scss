@@ -157,6 +157,33 @@
     }
 }
 
+
+.button_contact {
+    @extend .button;
+    border-color: $green_01;
+    color: $green_01;
+    background-color: transparent;
+
+    & .icon {
+        fill: $green_01;
+    }
+
+    &:hover, &:active, &:focus {
+        border-color: darken($green_01,20);
+        color: darken($green_01,20);
+        background-color: transparent;
+        & .icon {
+            fill: darken($green_01,20);
+        }
+    }
+
+    &--holder {
+        width: 100%;
+        text-align: center;
+        margin-top: rem-calc(60);
+    }
+}
+
 // form submit
 .button_submit {
     position: relative;

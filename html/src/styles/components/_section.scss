@@ -9,6 +9,11 @@
         padding-bottom: rem-calc(100);
     }
 
+    &.advertisers {
+        background: rgb(255,255,255);
+        background: linear-gradient(128deg, rgba(255,255,255,1) 11%, rgba(214,214,214,1) 70%, rgba(255,255,255,1) 100%);
+    }
+
     &.archives {
         color: $white;
         background: rgb(34,193,195);
@@ -21,7 +26,7 @@
     }
 
     &--title {
-        @include fts(20,20);
+        @include fts(18,18);
         font-weight: 400;
         margin-bottom: rem-calc(40);
         font-family: $font-roboto;
@@ -38,9 +43,8 @@
             border-bottom: 1px solid $main_text;
         }
 
-        @include xmedium {
-            @include fts(24,24);
-        }
+        @include xsmall { @include fts(20,20); }
+        @include xmedium { @include fts(24,24); }
 
         .archives & {
             @include xmedium {
@@ -64,11 +68,14 @@
 
 .subscribe_section {
     background-color: $white;
-    padding: rem-calc(60) rem-calc(40);
+    padding: rem-calc(60) rem-calc(20);
     max-width: rem-calc(800);
     margin: 0 auto;
     @include boxShadow;
 
+    @include xsmall {
+        padding: rem-calc(60) rem-calc(40);
+    }
     @include medium {
         padding: rem-calc(80) rem-calc(60);
     }
@@ -78,8 +85,11 @@
         background-attachment: fixed;
         background-position: center;
         background-size: cover;
-        padding: rem-calc(60) rem-calc(40);
+        padding: rem-calc(60) rem-calc(20);
 
+        @include xsmall {
+            padding: rem-calc(60) rem-calc(40);
+        }
         @include medium {
             padding: rem-calc(80) rem-calc(60);
         }
@@ -123,5 +133,64 @@
             margin-bottom: rem-calc(60);
             letter-spacing: 0.4em;
         };
+    }
+}
+
+
+.advertisers_section {
+
+    &--title {
+        @include fts(18,28);
+        margin-bottom: rem-calc(30);
+
+        & strong {
+            display: block;
+            font-weight: 600;
+        }
+    }
+
+    &--content {
+        @include fts(14,24);
+        margin-bottom: rem-calc(30);
+    }
+
+    &--mascot {
+        display: inline-block;
+        width: rem-calc(100);
+
+        @include xmedium {
+            width: rem-calc(180);
+        }
+
+        &--holder {
+            text-align: center;
+        }
+    }
+
+    &--link {
+        color: $green_01;
+        @include fts(15,25);
+        @include setTransition;
+
+        & .icon {
+            position: relative;
+            bottom: rem-calc(-4);
+            display: inline-block;
+            width: rem-calc(20);
+            height: rem-calc(20);
+            fill: $green_01;
+            margin-right: rem-calc(10);
+            @include setTransition;
+        }
+
+        &:hover, &:active, &:focus {
+            color: darken($green_01,20);
+            @include setTransition;
+
+            & .icon {
+                fill: darken($green_01,20);
+                @include setTransition;
+            }
+        }
     }
 }

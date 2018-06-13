@@ -28,8 +28,7 @@ export default {
     name: 'last-issue',
     data () {
         return {
-            pageData: null,
-            pageDataJA: null
+            pageData: null
         }
     },
 

@@ -2,8 +2,8 @@
     <div id="archives" class="section archives">
         <section class="container">
             <h2 class="section--title"><strong>archives</strong></h2>
-            <ul v-if="issues && issuesJA" class="columns is-multiline is-mobile">
-                <li class="column is-6-mobile is-3-tablet" v-for="issue in currentData" :key="issue.id">
+            <ul v-if="issues" class="columns is-multiline is-mobile">
+                <li class="column is-6-mobile is-3-tablet" v-for="issue in issues" :key="issue.id">
                     <a :href="issue.acf.issue_file" :title="issue.title.rendered" target="_blank">
                         <article class="issue_article">
                             <div class="issue_article--figure">
@@ -29,17 +29,13 @@
 </template>
 
 <script>
-// import Vue from 'vue'
 import axios from '@/services/axios.js'
-// import PartnersItem from '@/components/HomeissuesItem'
-// Vue.component('partners-item', PartnersItem)
 
 export default {
-    name: 'archives',
+    name: 'home-archives',
     data () {
         return {
-            issues: null,
-            issuesJA: null
+            issues: null
         }
     },
 
@@ -51,13 +47,6 @@ export default {
         lang () {
             return this.$route.meta.lang
         },
-        currentData () {
-            if (this.$route.meta.lang === 'ja') {
-                return this.issuesJA
-            } else {
-                return this.issues
-            }
-        },
         archivesRoute () {
             return 'Archives-' + this.lang
         }
@@ -65,12 +54,6 @@ export default {
 
     methods: {
         fetchData () {
-            axios.get('wp-json/wp/v2/issues?filter[posts_per_page]=4&filter[orderby]=date&order=desc&lang=ja')
-                .then(response => {
-                    this.issuesJA = response.data
-                    console.log(this.issuesJA)
-                })
-                .catch(e => { console.log(e) })
             axios.get('wp-json/wp/v2/issues?filter[posts_per_page]=5&filter[orderby]=date&order=desc')
                 .then(response => {
                     this.issues = response.data

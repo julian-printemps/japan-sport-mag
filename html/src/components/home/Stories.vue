@@ -17,7 +17,7 @@
 <script>
 import Vue from 'vue'
 import axios from '@/services/axios.js'
-import StoriesItem from '@/components/StoriesItem'
+import StoriesItem from '@/components/home/StoriesItem'
 import VueAgile from 'vue-agile'
 import VueCarousel from 'vue-carousel'
 

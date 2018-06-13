@@ -121,6 +121,10 @@
         width: 100%;
         @include boxShadowImage;
         margin-bottom: rem-calc(15);
+
+        .archives_page & {
+            @include boxShadowImageLight;
+        }
     }
 
     &--title {
@@ -129,6 +133,10 @@
         color: $white;
         font-family: $font-default;
         font-weight: 600;
+
+        .archives_page & {
+            color: $black;
+        }
 
         @include xmedium {
             @include fts(16,16);
@@ -154,6 +162,10 @@
                 height: rem-calc(28);
                 border-radius: 50%;
                 border: 1px solid $white;
+
+                .archives_page & {
+                    border: 1px solid $black;
+                }
             }
         }
     }

@@ -290,3 +290,15 @@
         }
     }
 }
+
+
+.archives_page {
+    &--main {
+        order: 2;
+    }
+
+    &--aside {
+        margin-bottom: rem-calc(40);
+        order: 1;
+    }
+}

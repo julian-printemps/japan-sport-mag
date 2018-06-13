@@ -58,6 +58,17 @@
 }
 
 
+.link {
+    color: $green_01;
+    @include setTransition;
+
+    &:hover, &:active, &:focus {
+        color: darken($green_01,20);
+        @include setTransition;
+    }
+}
+
+
 // Layout
 .small-shrink {
     -webkit-box-flex: 0;
