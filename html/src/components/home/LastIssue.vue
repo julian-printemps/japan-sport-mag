@@ -9,7 +9,7 @@
 
             <section class="last_issue--main column is-12-mobile is-7-tablet">
                 <h3 class="last_issue--title">{{issueTitle}}</h3>
-                <div class="last_issue--content" v-html="pageData.content.rendered"></div>
+                <div class="last_issue--content" v-html="pageContent"></div>
 
                 <div class="button_download--holder">
                     <a :href="pageData.acf.issue_file" target="_blank" title="Download last issue" class="button_download">
@@ -42,6 +42,13 @@ export default {
                 return this.pageData.acf.issue_title_ja
             } else {
                 return this.pageData.acf.issue_title_en
+            }
+        },
+        pageContent () {
+            if (this.$route.meta.lang === 'ja') {
+                return this.pageData.acf.page_content_ja
+            } else {
+                return this.pageData.acf.page_content_en
             }
         }
     },

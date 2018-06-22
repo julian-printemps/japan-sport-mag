@@ -1,5 +1,6 @@
 <template>
     <main class="wrapper archives_page">
+        <div class="wrapper--bg"></div>
         <section class="main--inner container">
             <h1 class="main--title"><strong>archives</strong></h1>
 

@@ -6,6 +6,30 @@
     @include medium {
         padding-top: rem-calc(54);
     }
+
+    &--bg {
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-position: top;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: rem-calc(150);
+
+        @include medium {
+            height: rem-calc(250);
+        };
+
+        .about & { background-image: url('/static/img/adventure-beach.jpg'); }
+        .archives_page & { background-image: url('/static/img/adventure-blue.jpg'); }
+        .contact_page & { background-image: url('/static/img/clouds-dawn.jpg'); }
+
+        .empty & {
+            background-color: $grey_01;
+        }
+    }
 }
 
 .container {

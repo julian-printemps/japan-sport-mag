@@ -177,8 +177,8 @@ function jul_issues_create_post_type() {
 
 
 function send_email_func( WP_REST_Request $request ) {
-	// $to = 'andy@bropublishing.com, chris@bropublishing.com';
-	$to = 'julian.printemps@gmail.com';
+	$to = 'chris@japansportsmagazine.com';
+	// $to = 'julian.printemps@gmail.com';
 
 	$type = $request['type'];
 	$message = $request['message'];
@@ -187,7 +187,7 @@ function send_email_func( WP_REST_Request $request ) {
 	$lastname = $request['lastname'];
 	$name = $firstname.' '.$lastname;
 	$email = $request['email'];
-	$subject = $type.' | '.$request['subject'];
+	$subject = ' JSM | '.$type.' | '.$request['subject'];
 
 	if ($type == 'advertiser') {
 		$body = '<b>From:</b> '.$name.' - '.$email.'<br><b>Company:</b> '.$companyname.'<br><br><br>'.$message;

@@ -1,5 +1,6 @@
 <template>
     <main class="wrapper contact_page">
+        <div class="wrapper--bg"></div>
         <div class="container">
             <ul class="tabs columns is-mobile is-gapless is-centered">
                 <li class="tabs--item column is-narrow">
