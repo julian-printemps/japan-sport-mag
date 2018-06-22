@@ -3,8 +3,7 @@
         <h2 class="section--title"><strong>magazine</strong></h2>
 
         <div class="columns is-mobile is-multiline">
-            <div v-if="magazine" class="column is-12-mobile is-auto-desktop" v-html="magazineIntro">
-            </div>
+            <div v-if="magazine" class="column is-12-mobile is-auto-desktop" v-html="magazineIntro"></div>
 
             <div class="magazine_grid column is-12-mobile is-narrow-desktop">
                 <ul class="magazine_grid--row columns is-multiline is-gapless is-mobile">
@@ -53,9 +52,9 @@ export default {
         },
         magazineIntro () {
             if (this.$route.meta.lang === 'ja') {
-                return this.magazine.acf.magazine_content_ja
+                return this.magazine.acf.page_content_ja
             } else {
-                return this.magazine.acf.magazine_content_en
+                return this.magazine.acf.page_content_en
             }
         },
         navRoutes () {

@@ -1,3 +1,40 @@
+.form {
+    & .input,
+    & .textarea {
+        display: block;
+        border-radius: 0;
+        border: 1px solid $black;
+        box-shadow: none;
+        height: rem-calc(52);
+        padding: rem-calc(7) rem-calc(14) rem-calc(7) rem-calc(14);
+        @include setTransition;
+
+        &.no-icon {
+            padding-left: rem-calc(10);
+        }
+
+        &:focus {
+            @include setTransition;
+            @include boxShadow;
+        }
+    }
+
+    & .textarea {
+        height: rem-calc(200);
+    }
+
+    & .icon-input {
+        position: absolute;
+        z-index: 10;
+        top: calc(50% - 10px);
+        left: rem-calc(10);
+        width: rem-calc(20);
+        height: rem-calc(20);
+        fill: $black;
+    }
+}
+
+
 .form_validation {
     padding-top: rem-calc(40);
 
@@ -41,7 +78,8 @@
             margin: 0 rem-calc(4) rem-calc(10);
         }
 
-        & .input {
+        & .input,
+        & .textarea {
             display: block;
             border-radius: 0;
             border: 1px solid $black;
@@ -58,6 +96,10 @@
                 @include setTransition;
                 @include boxShadow;
             }
+        }
+
+        & .textarea {
+            resize: vertical;
         }
 
         & .icon {

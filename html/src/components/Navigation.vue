@@ -26,12 +26,12 @@
                         <!--<li class="column is-narrow">-->
                             <!--<router-link :to="{ name: navRoutes.partners }" title="Partners">Partners</router-link>-->
                         <!--</li>-->
-                        <!--<li class="column is-narrow">-->
-                            <!--<router-link :to="{ name: navRoutes.archives }" title="Archives">Archives</router-link>-->
-                        <!--</li>-->
-                        <!--<li class="column is-narrow">-->
-                            <!--<router-link :to="{ name: navRoutes.contact }" title="Contact">Contact</router-link>-->
-                        <!--</li>-->
+                        <li class="column is-narrow">
+                            <router-link :to="{ name: navRoutes.archives }" title="Archives">Archives</router-link>
+                        </li>
+                        <li class="column is-narrow">
+                            <router-link :to="{ name: navRoutes.contact }" title="Contact">Contact</router-link>
+                        </li>
                         <li class="column is-narrow">
                             <router-link :to="{ name: currentRoute }" class="lang-switch">
                                 <template v-if="lang === 'ja'">English</template>
@@ -40,14 +40,14 @@
                         </li>
                         <li class="column is-12 is-hidden-tablet">
                             <button type="button" name="subscribe" class="button_subscribe" @click="showModal()">
-                                <svg class="icon icon-envelope-o"><use xlink:href="#icon-envelope-o"></use></svg>Subcribe
+                                <svg class="icon icon-mascot"><use xlink:href="#icon-mascot"></use></svg>Subcribe
                             </button>
                         </li>
                     </ul>
                 </nav>
                 <div class="is-hidden-mobile column is-narrow">
                     <button type="button" name="subscribe" class="button_subscribe" @click="showModal()">
-                        <svg class="icon icon-envelope-o"><use xlink:href="#icon-envelope-o"></use></svg>Subcribe
+                        <svg class="icon icon-mascot"><use xlink:href="#icon-mascot"></use></svg>Subcribe
                     </button>
                 </div>
             </section>

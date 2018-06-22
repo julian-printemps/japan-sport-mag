@@ -1,0 +1,36 @@
+.tabs {
+    padding-top: rem-calc(80);
+    & > &--item {
+        &:not(:last-child) {
+            border-right: 1px solid $grey_03;
+        }
+    }
+
+    &--button {
+        display: inline-block;
+        border: 0;
+        background-color: transparent;
+        padding: rem-calc(10) rem-calc(20);
+        color: $gray_02;
+        @include fts(20,20);
+        //font-weight: bold;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        cursor: pointer;
+        @include setTransition;
+
+        &:focus {
+            color: $gray_02;
+            @include setTransition;
+        }
+        &:hover, &.is-active {
+            color: $green_01;
+            @include setTransition;
+        }
+
+        &:active {
+            color: lighten($green_01,30);
+            @include setTransition;
+        }
+    }
+}

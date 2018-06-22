@@ -1,12 +1,15 @@
 <template>
-    <main class="wrapper fade_in_intro">
-        <!--<stories></stories>-->
-        <!--<home-partners></home-partners>-->
-        <last-issue></last-issue>
-        <home-archives></home-archives>
-        <!--<home-magazine></home-magazine>-->
-        <subscribe></subscribe>
-        <home-advertiser></home-advertiser>
+    <main class="fade_in_intro">
+        <stories></stories>
+
+        <div class="wrapper">
+          <!--<home-partners></home-partners>-->
+          <last-issue></last-issue>
+          <home-archives></home-archives>
+          <!--<home-magazine></home-magazine>-->
+          <subscribe></subscribe>
+          <home-advertiser></home-advertiser>
+        </div>
     </main>
 </template>
 

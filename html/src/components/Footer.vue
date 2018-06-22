@@ -1,7 +1,7 @@
 <template>
-    <footer class="fade_in_intro container">
-        <div class="columns is-centered is-multiline is-mobile">
-            <section class="footer column is-10 is-10-tablet is-8-desktop text-center">
+    <footer class="footer">
+        <div class="fade_in_intro columns is-centered is-multiline is-mobile">
+            <section class="column is-10 is-10-tablet is-8-desktop text-center">
                 <h2 class="footer--logo--holder">
                     <router-link :to="{ name: navRoutes.home }" title="Home">
                         <img src="/static/img/logo/logo-1.png" class="footer--logo" alt="Japan Sport Magazine">

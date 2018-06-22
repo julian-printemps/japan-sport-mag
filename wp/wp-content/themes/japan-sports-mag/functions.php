@@ -176,33 +176,32 @@ function jul_issues_create_post_type() {
 
 
 
-add_action('phpmailer_init','send_smtp_email');
-function send_smtp_email( $phpmailer )
-{
-	$phpmailer->isSMTP();
-	$phpmailer->Host       = SMTP_HOST;
-	$phpmailer->SMTPAuth   = SMTP_AUTH;
-	$phpmailer->Port       = SMTP_PORT;
-	$phpmailer->Username   = SMTP_USER;
-	$phpmailer->Password   = SMTP_PASS;
-	$phpmailer->SMTPSecure = SMTP_SECURE;
-	$phpmailer->From       = SMTP_FROM;
-	$phpmailer->FromName   = SMTP_NAME;
-}
-
-
 function send_email_func( WP_REST_Request $request ) {
+	// $to = 'andy@bropublishing.com, chris@bropublishing.com';
 	$to = 'julian.printemps@gmail.com';
-	$subject = 'Subscription';
-	$body = 'New subscription';
+
+	$type = $request['type'];
+	$message = $request['message'];
+	$firstname = $request['firstname'];
+	$companyname = $request['companyname'];
+	$lastname = $request['lastname'];
+	$name = $firstname.' '.$lastname;
 	$email = $request['email'];
-	$name = $request['name'];
+	$subject = $type.' | '.$request['subject'];
+
+	if ($type == 'advertiser') {
+		$body = '<b>From:</b> '.$name.' - '.$email.'<br><b>Company:</b> '.$companyname.'<br><br><br>'.$message;
+	} else {
+		$body = '<b>From:</b> '.$name.' - '.$email.'<br><br><br>'.$message;
+	}
+
+
 	$headers = array(
 		'MIME-Version: 1.0',
 		'Content-Type: text/html; charset=UTF-8'
 	);
 	wp_mail( $to, $subject, $body, $headers );
-	return 'Mail sent';
+	return true;
 }
 
 
@@ -218,7 +217,7 @@ function subscribe_func( WP_REST_Request $request ) {
 
 function syncMailchimp($data) {
 	$apiKey = '9304710d5dec14c7a61bec4086033b0a-us18';
-  $listId = '7a83639333';
+  $listId = '0f778348a4';
 
 	$memberId = md5(strtolower($data['email']));
   $dataCenter = substr($apiKey,strpos($apiKey,'-')+1);
@@ -226,7 +225,7 @@ function syncMailchimp($data) {
 
 	$json = json_encode([
     'email_address' => $data['email'],
-    'status'        => $data['status'], // "subscribed","unsubscribed","cleaned","pending"
+    'status'        => 'pending', // "subscribed","unsubscribed","cleaned","pending"
     'merge_fields'  => [
         'FNAME'     => $data['firstname'],
         'LNAME'     => $data['lastname']

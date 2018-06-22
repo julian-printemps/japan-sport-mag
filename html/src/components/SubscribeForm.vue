@@ -30,7 +30,7 @@
                 </div>
                 <div class="subscribe_form--button column is-12">
                     <button type="submit" name="subscribe" class="button_subscribe large">
-                        <svg class="icon icon-telegram"><use xlink:href="#icon-telegram"></use></svg>Subscribe
+                        <svg class="icon icon-mascot"><use xlink:href="#icon-mascot"></use></svg>Subscribe
                     </button>
                 </div>
             </form>

@@ -1,5 +1,7 @@
 .wrapper {
+  position: relative;
     padding-top: rem-calc(54);
+    background-color: $white;
 
     @include medium {
         padding-top: rem-calc(54);

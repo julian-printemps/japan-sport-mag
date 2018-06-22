@@ -13,7 +13,7 @@
         right: rem-calc(10);
 
 
-        @include large {
+        @include xmedium  {
             display: none;
         }
     }
@@ -50,6 +50,7 @@
     cursor: pointer;
     font-family: $font-roboto;
     background-color: $white;
+    text-transform: uppercase;
 
     & .icon {
         position: absolute;
@@ -214,12 +215,12 @@
 
     &:hover, &:active {
         background-color: transparent;
-        color: $black;
-        border-color: $black;
+        color: $green_01;
+        border-color: $green_01;
         @include setTransition;
 
         & .icon {
-            fill: $black;
+            fill: $green_01;
             @include setTransition;
         }
     }

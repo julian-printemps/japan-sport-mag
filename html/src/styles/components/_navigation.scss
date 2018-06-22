@@ -22,7 +22,7 @@
         padding-bottom: rem-calc(20);
     }
 
-    @include medium {
+    @include xmedium {
         position: fixed;
         padding-top: 0;
         min-height: 0;
@@ -82,7 +82,7 @@
 
         &.is-active { display: block; }
 
-        @include medium {
+        @include xmedium {
             display: flex;
             padding-bottom: 0;
             &.is-active { display: flex; }
@@ -106,7 +106,7 @@
                 letter-spacing: 0.2em;
 
 
-                @include medium {
+                @include xmedium {
                     @include fts(15,25);
                 };
 
@@ -139,6 +139,7 @@
                 border: none;
                 border-top: 1px solid $grey_03;
                 cursor: pointer;
+                word-break: keep-all;
 
                 @include xmedium {
                     border-top: none;

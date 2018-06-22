@@ -1,12 +1,20 @@
 .hero {
     position: relative;
+    top: 0;
+    overflow: hidden;
+    z-index: 0;
+    background-image: url(/static/video/video-poster.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include medium {
+      background-image: none;
+    };
 
     &.is-fullheight {
-        height: auto;
+        height: 100vh;
         min-height: 100vh;
-        // background-image: url(../static/img/hero.jpg);
-        // background-position: bottom;
-        // background-size: cover;
 
         & .hero-body {
             display: block;
@@ -24,12 +32,78 @@
     }
 
     &-body {
-        position: relative;
+        position: sticky;
+        top: 0;
         padding: 0;
         width: 100%;
+        height: 100vh;
+    }
+
+    &--story_title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: rgba($black, 0.6);
+      color: $white;
+      @include fts(14,24);
+      padding: rem-calc(16) rem-calc(20);
+      display: inline-block;
+      z-index: 10;
+
+      & strong {
+        @include fts(16,26);
+        font-weight: bold;
+        color: $white;
+        display: block;
+        margin-bottom: rem-calc(16);
+      }
+
+      @include medium {
+        @include fts(16,26);
+        padding: rem-calc(20) rem-calc(30);
+
+        & strong {
+          @include fts(18,28);
+          margin-bottom: rem-calc(10);
+        }
+      };
+    }
+
+    &--logo {
+        display: block;
+        position: absolute;
+        width: rem-calc(240);
+        top: calc(50% - 120px);
+        left: calc(50% - 120px);
+        animation: 1s ease forwards 10s fade_out_intro;
+
+        background-color: rgba($white, 0.5);
+        padding: rem-calc(20);
 
         @include medium {
-            height: 100%;
+          width: rem-calc(400);
+          top: calc(50% - 125px);
+          left: calc(50% - 200px);
+          padding: rem-calc(30);
+        };
+
+        @include large {
+          width: rem-calc(500);
+          top: calc(50% - 160px);
+          left: calc(50% - 250px);
+        };
+    }
+
+    &--video {
+        position: fixed;
+        height: 100vh;
+        min-height: 100%;
+        width: auto;
+        min-width: 100%;
+        max-width: none;
+
+        @include medium {
+            height: auto;
         }
     }
 }
